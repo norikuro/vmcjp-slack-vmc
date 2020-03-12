@@ -1,3 +1,4 @@
+from vmcjp.slack.db import write_cred_db
 
 def lambda_handler(event):
     if expired(event.get("expire_time")):
