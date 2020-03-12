@@ -16,3 +16,12 @@ def read_cred_db(db_url, user_id):
       "db_command": "read_cred_db"
     }
     return call_lambda_sync("slack_db", event)
+
+def write_cred_db(db_url, user_id, data):
+    event = {
+        "db_url": db_url,
+        "user_id": user_id,
+        "db_command": "write_cred_db",
+        "data": data
+    }
+    call_lambda_async("slack_db", event)
