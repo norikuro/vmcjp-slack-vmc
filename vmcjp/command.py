@@ -20,7 +20,7 @@ def list_sddcs(event):
             )
         }
     else:
-        access_token = login(event.get("token")
+        new_token = login(event.get("token")
         sddcs = {
             "sddc_list": sddc_list(
                 access_token, 
@@ -29,6 +29,7 @@ def list_sddcs(event):
         }
         sddcs.update(
             {
-                "access_token": access_token
+                "access_token": new_token.get("access_token"),
+                "expire_time": new_token.get("expire_time")
         )
     return sddcs
