@@ -1,5 +1,5 @@
 
-def event_handler(event):
+def lambda_handler(event):
     response = login(event.get("token"))
     if response is not None:
         event.update(
