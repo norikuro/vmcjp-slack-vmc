@@ -7,9 +7,9 @@ def event_handler(event):
                 "access_token": response.get("access_token")
             }
         )    
-    eval(cmd)(event, db)
+    eval(event.get("vmc_command"))(event)
 
-def list_sddcs(event, db):
+def list_sddcs(event):
     return sddc_list(
         event.get("access_token"), 
         event.get("org_id")
