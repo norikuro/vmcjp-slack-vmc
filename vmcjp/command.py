@@ -11,6 +11,6 @@ def event_handler(event):
 
 def list_sddcs(event):
     return sddc_list(
-        event.get("access_token"), 
+        event.get("token"), 
         event.get("org_id")
     )
