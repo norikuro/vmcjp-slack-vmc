@@ -1,7 +1,7 @@
 import time
 
 from vmcjp.slack.db import write_cred_db
-from vmcjp.vmc.vmc_client import login
+from vmcjp.vmc.vmc_client import login, sddc_list
 
 def lambda_handler(event):
     if expired(event.get("expire_time")):
