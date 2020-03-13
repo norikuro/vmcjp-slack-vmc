@@ -12,7 +12,7 @@ def lambda_handler(event):
     expire_time = event.get("expire_time")
     command = event.get("vmc_command")
     
-    if "list_sddcs" is in command:
+    if "list_sddcs" in command:
         data = login(event.get("token"))
         event.update(data)
     else:
