@@ -40,7 +40,7 @@ def get_sddcs(access_token, org_id):
     )
     
     if response is not None:
-        logging.info(response)
+#        logging.info(response)
         sddcs = response.json()
         if response.status_code == 200:
             return sddcs
