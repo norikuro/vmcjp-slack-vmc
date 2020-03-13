@@ -13,8 +13,10 @@ def lambda_handler(event, context):
     expire_time = event.get("expire_time")
     command = event.get("vmc_command")
     
+    logging.info("!!!next is expire or not")
     if expire_time is None and command in cmd_const.COMMAND_SDDC:
         data = login(event.get("token"))
+        logging.info("!!!login {}".format(data))
         write_cred_db(
             event.get("db_url"),
             event.get("user_id"),
