@@ -10,10 +10,6 @@ from vmcjp.vmc.vmc_client import login, sddc_list
 
 def lambda_handler(event, context):
 #    logging.info(event)
-    check_access_token_expiration(event)
-    return eval(event.get("vmc_command"))(event)
-
-def check_access_token_expiration(event):
     expire_time = event.get("expire_time")
     command = event.get("vmc_command")
     
@@ -33,6 +29,8 @@ def check_access_token_expiration(event):
             event.get("user_id"),
             data
         )
+    
+    return eval(event.get("vmc_command"))(event)
 
 def expired(expire_time):
     now = time.time()
