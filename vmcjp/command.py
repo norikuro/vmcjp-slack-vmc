@@ -24,7 +24,7 @@ def lambda_handler(event, context):
                 event.get("user_id"),
                 data
             )
-    eval(event.get("vmc_command"))(event)
+    return eval(event.get("vmc_command"))(event)
 
 def expired(expire_time):
     now = time.time()
