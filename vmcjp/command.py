@@ -37,7 +37,13 @@ def expired(expire_time):
     return now > expire_time
 
 def list_sddcs(event):
-    return sddc_list(
+    list = sddc_list(
         event.get("access_token"), 
         event.get("org_id")
     )
+    logging.info(list)
+#    return sddc_list(
+#        event.get("access_token"), 
+#        event.get("org_id")
+#    )
+    return list
