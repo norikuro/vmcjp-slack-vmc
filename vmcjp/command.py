@@ -21,15 +21,14 @@ def lambda_handler(event, context):
             data
         )
         event.update(data)
-    else:
-        if expire_time is not None and expired(expire_time):
-            data = login(event.get("token"))
-            event.update(data)
-            write_cred_db(
-                event.get("db_url"),
-                event.get("user_id"),
-                data
-            )
+    elif expire_time is not None and expired(expire_time):
+        data = login(event.get("token"))
+        event.update(data)
+        write_cred_db(
+            event.get("db_url"),
+            event.get("user_id"),
+            data
+        )
     return eval(event.get("vmc_command"))(event)
 
 def expired(expire_time):
