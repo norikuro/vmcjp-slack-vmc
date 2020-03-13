@@ -34,11 +34,11 @@ def get_sddcs(access_token, org_id):
     headers = {"csp-auth-token": access_token}
     headers.update(HEADERS)
     
-    response = requests.get(
-        '{}{}'.format(VMC_URL, uri),
-        headers=headers
-    )
-    
+#    response = requests.get(
+#        '{}{}'.format(VMC_URL, uri),
+#        headers=headers
+#    )
+    response = None    
     if response is not None:
 #        logging.info(response)
         sddcs = response.json()
