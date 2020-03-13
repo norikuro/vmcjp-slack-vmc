@@ -18,9 +18,7 @@ def lambda_handler(event, context):
         write_cred_db(
             event.get("db_url"),
             event.get("user_id"),
-            {
-                data
-            }
+            data
         )
         event.update(data)
     else:
