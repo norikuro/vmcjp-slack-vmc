@@ -34,10 +34,10 @@ def get_sddcs(access_token, org_id):
     headers = {"csp-auth-token": access_token}
     headers.update(HEADERS)
     
-#    response = requests.get(
-#        '{}{}'.format(VMC_URL, uri),
-#        headers=headers
-#    )
+    response = requests.get(
+        '{}{}'.format(VMC_URL, uri),
+        headers=headers
+    )
     response = None    
     if response is not None:
 #        logging.info(response)
@@ -59,13 +59,12 @@ def sddc_name_and_id_list(access_token, org_id):
         ]
 
 def sddc_list(access_token, org_id):
-#    sddcs = get_sddcs(access_token, org_id)
-#    return [
-#        {
-#            "sddc_name": sddc.get("name"),
-#            "user_name": sddc.get("user_name"),
-#            "created": sddc.get("created"),
-#            "num_hosts": len(sddc.get("resource_config").get("esx_hosts"))
-#        } for sddc in sddcs
-#    ]
-    return None
+    sddcs = get_sddcs(access_token, org_id)
+    return [
+        {
+            "sddc_name": sddc.get("name"),
+            "user_name": sddc.get("user_name"),
+            "created": sddc.get("created"),
+            "num_hosts": len(sddc.get("resource_config").get("esx_hosts"))
+        } for sddc in sddcs
+    ]
