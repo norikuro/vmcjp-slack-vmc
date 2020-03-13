@@ -1,6 +1,7 @@
 import time
 #import logging
 
+from vmcjp.utils import cmd_const
 from vmcjp.slack.db import write_cred_db
 from vmcjp.vmc.vmc_client import login, sddc_list
 
