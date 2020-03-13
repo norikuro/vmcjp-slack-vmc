@@ -1,4 +1,4 @@
-from vmcjp.utils.lambdautils import call_lambda_sync
+from vmcjp.utils.lambdautils import call_lambda_sync, call_lambda_async
 
 def read_event_db(db_url, user_id, minuites=None):
     event = {
