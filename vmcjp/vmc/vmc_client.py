@@ -59,7 +59,7 @@ def sddc_name_and_id_list(access_token, org_id):
         ]
 
 def sddc_list(access_token, org_id):
-    sddcs = get_sddcs(access_token, org_id)
+#    sddcs = get_sddcs(access_token, org_id)
 #    return [
 #        {
 #            "sddc_name": sddc.get("name"),
@@ -68,3 +68,4 @@ def sddc_list(access_token, org_id):
 #            "num_hosts": len(sddc.get("resource_config").get("esx_hosts"))
 #        } for sddc in sddcs
 #    ]
+    return None
