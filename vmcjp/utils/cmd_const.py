@@ -18,11 +18,11 @@ class _const:
   }
   
   COMMAND_SDDC = {
-    "create zerocloud sddc": "create_zero_sddc",
-    "create sddc": "create_sddc",
-    "delete sddc": "delete_sddc",
-    "list sddcs": "list_sddcs",
-    "restore sddc": "restore_sddc", # for internal use
+    "create zerocloud sddc": CREATE_ZEROCLOUD_SDDC,
+    "create sddc": CREATE_SDDC,
+    "delete sddc": DELETE_SDDC,
+    "list sddcs": LIST_SDDCS,
+    "restore sddc": RESTORE_SDDC, # for internal use
   }
   
   #followings are status of register ORG and token
