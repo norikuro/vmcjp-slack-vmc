@@ -1,11 +1,11 @@
 import time
-import logging
+#import logging
 
 from vmcjp.slack.db import write_cred_db
 from vmcjp.vmc.vmc_client import login, sddc_list
 
-logger = logging.getLogger()
-logger.setLevel(logging.INFO)
+#logger = logging.getLogger()
+#logger.setLevel(logging.INFO)
 
 def lambda_handler(event, context):
 #    logging.info(event)
@@ -35,5 +35,4 @@ def list_sddcs(event):
         event.get("access_token"), 
         event.get("org_id")
     )
-    logging.info("!!!list: {}".format(list))
     return list
