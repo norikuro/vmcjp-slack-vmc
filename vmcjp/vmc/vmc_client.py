@@ -60,11 +60,12 @@ def sddc_name_and_id_list(access_token, org_id):
 
 def sddc_list(access_token, org_id):
     sddcs = get_sddcs(access_token, org_id)
-    return [
-        {
-            "sddc_name": sddc.get("name"),
-            "user_name": sddc.get("user_name"),
-            "created": sddc.get("created"),
-            "num_hosts": len(sddc.get("resource_config").get("esx_hosts"))
-        } for sddc in sddcs
-    ]
+    if sddcs is not None:
+        return [
+            {
+                "sddc_name": sddc.get("name"),
+                "user_name": sddc.get("user_name"),
+                "created": sddc.get("created"),
+                "num_hosts": len(sddc.get("resource_config").get("esx_hosts"))
+            } for sddc in sddcs
+        ]
