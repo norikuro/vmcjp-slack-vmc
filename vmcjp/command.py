@@ -14,7 +14,7 @@ def lambda_handler(event, context):
     command = event.get("vmc_command")
     
     logging.info("!!!next is expire or not")
-    logging.info("!!!command is {}".format(command))
+    logging.info("!!!command is {}".format(cmd_const.COMMAND_SDDC))
     logging.info("!!!expire is {}".format(expire_time))
     if (expire_time is None) and (command in cmd_const.COMMAND_SDDC):
         data = login(event.get("token"))
