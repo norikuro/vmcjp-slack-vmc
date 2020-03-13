@@ -13,7 +13,6 @@ def lambda_handler(event, context):
     command = event.get("vmc_command")
     
     if "list_sddcs" in command:
-#        data = None
         data = login(event.get("token"))
         event.update(data)
     else:
