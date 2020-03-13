@@ -7,7 +7,7 @@ from vmcjp.vmc.vmc_client import login, sddc_list
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
-def lambda_handler(event):
+def lambda_handler(event, context):
     logging.info(event)
     expire_time = event.get("expire_time")
     command = event.get("vmc_command")
