@@ -13,8 +13,10 @@ def lambda_handler(event, context):
     command = event.get("vmc_command")
     
     if "list_sddcs" in command:
+        logging.info("!!!next is login and update event")
         data = login(event.get("token"))
         event.update(data)
+        logging.info("!!!event: {}".format(event))
     else:
         if expire_time is not None and expired(expire_time):
             data = login(event.get("token"))
@@ -24,6 +26,7 @@ def lambda_handler(event, context):
                 event.get("user_id"),
                 data
             )
+    logging.info("next is eval()")
     eval(event.get("vmc_command"))(event)
 
 def expired(expire_time):
@@ -31,6 +34,7 @@ def expired(expire_time):
     return now > expire_time
 
 def list_sddcs(event):
+    logging.info("!!!here is list_sddcs")
     return sddc_list(
         event.get("access_token"), 
         event.get("org_id")
