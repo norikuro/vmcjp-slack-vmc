@@ -13,8 +13,6 @@ class _const:
   RESTORE_SDDC = "restore_sddc" # for internal use
   
   COMMAND_ORG = {
-#    "register org": "register_org",
-#    "delete org": "delete_org"
     "register org": REGISTER_ORG,
     "delete org": DELETE_ORG
   }
