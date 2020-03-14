@@ -1,11 +1,7 @@
 import json
-import logging
 
 from botocore.session import Session
 from botocore.config import Config
-
-logger = logging.getLogger()
-logger.setLevel(logging.INFO)
 
 def call_lambda(function, data):
     s = Session()
@@ -20,7 +16,6 @@ def call_lambda(function, data):
     )
 
 def call_lambda_async(function, data):
-    logging.info("!!!call_lambda: {}, {}".format(function, data))
     s = Session()
     clientLambda = s.create_client(
         "lambda", 
