@@ -13,12 +13,8 @@ def lambda_handler(event, context):
     expire_time = event.get("expire_time")
     command = event.get("vmc_command")
     
-    logging.info("!!!next is expire or not")
-    logging.info("!!!command is {}".format(cmd_const.COMMAND_SDDC))
-    logging.info("!!!expire is {}".format(expire_time))
     if expire_time is None and command in "list_sddcs":
         data = login(event.get("token"))
-        logging.info("!!!login {}".format(data))
         write_cred_db(
             event.get("db_url"),
             event.get("user_id"),
@@ -45,7 +41,6 @@ def list_sddcs(event):
         event.get("access_token"), 
         event.get("org_id")
     )
-    logging.info(list)
 #    return sddc_list(
 #        event.get("access_token"), 
 #        event.get("org_id")
