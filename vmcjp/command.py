@@ -15,6 +15,7 @@ def lambda_handler(event, context):
     
     if expire_time is None and command in "list_sddcs":
         data = login(event.get("token"))
+        logging.info("!!!user_id: {}".format(event.get("user_id")))
         write_cred_db(
             event.get("db_url"),
             event.get("user_id"),
