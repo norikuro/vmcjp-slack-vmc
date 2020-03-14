@@ -38,7 +38,7 @@ def login(refresh_token):
 #            }
         return {
             "access_token": data.get("access_token"),
-            "expire_time": now + data.get("expires_in")
+            "expire_time": now + data.get("expires_in") - 180 # minus 3 minutes for extra time befire expire the access_token
         }
 
 def get_sddcs(access_token, org_id):
