@@ -1,9 +1,4 @@
-import logging
-
 from vmcjp.utils.lambdautils import call_lambda_sync, call_lambda_async
-
-logger = logging.getLogger()
-logger.setLevel(logging.INFO)
 
 def read_event_db(db_url, user_id, minuites=None):
     event = {
@@ -23,7 +18,6 @@ def read_cred_db(db_url, user_id):
     return call_lambda_sync("slack_db", event)
 
 def write_cred_db(db_url, user_id, data):
-    logging.info("!!!write_cred_db: {}".format(user_id))
     event = {
         "db_url": db_url,
         "user_id": user_id,
