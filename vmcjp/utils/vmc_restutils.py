@@ -7,16 +7,18 @@ logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
 def post_request(url, headers, query=None, params=None):
+  logging.info("!!! query: {}".format(query))
   if query is not None:
-    query = urllib.parse.urlencode(query)
-    url = "{}?{}".format(url, query)
+    _query = urllib.parse.urlencode(query)
+    _url = "{}?{}".format(url, query)
+    logging.info("!!! url: {}".format(_url))
   if params is not None:
     data = json.dumps(params).encode("utf-8")
   else:
     data = None
 
   request = urllib.request.Request(
-    url,
+    _url,
     method = "POST",
 #    data=data, 
     headers=headers
