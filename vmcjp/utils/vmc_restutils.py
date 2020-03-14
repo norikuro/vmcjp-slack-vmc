@@ -1,12 +1,19 @@
 import requests
+import urllib.request
 import json
 
 def post_request(url, headers, params):
-  response = requests.post(
+  request = urllib.request.Request(
     url,
-    headers=headers,
-    params=params
+    data=json.dumps(params).encode("utf-8"), 
+    headers=headers
   )
+  response = urllib.request.urlopen(request)
+#  response = requests.post(
+#    url,
+#    headers=headers,
+#    params=params
+#  )
   if response is not None:
     data = response.json()
     if response.status_code == 200:
