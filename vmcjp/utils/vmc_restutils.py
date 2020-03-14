@@ -3,6 +3,9 @@ import urllib.request
 import json
 import logging
 
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+
 def post_request(url, headers, query=None, params=None):
   if query is not None:
     query = urllib.parse.urlencode(query)
@@ -14,7 +17,8 @@ def post_request(url, headers, query=None, params=None):
 
   request = urllib.request.Request(
     url,
-    data=data, 
+    method = "POST",
+#    data=data, 
     headers=headers
   )
   
