@@ -3,7 +3,7 @@ import json
 import time
 #import logging
 
-from vmcjp.utils.restutils import post_request, get_request
+from vmcjp.utils.vmc_restutils import post_request, get_request
 
 LOGIN_URL = "https://console.cloud.vmware.com/csp/gateway"
 VMC_URL = "https://vmc.vmware.com/vmc/api"
