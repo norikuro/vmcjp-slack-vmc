@@ -25,7 +25,7 @@ def post_request(url, headers, query=None, params=None):
   
 #  response = urllib.request.urlopen(request)
   with urllib.request.urlopen(request) as response:
-    data = response.read().decode("utf-8")
+    data = json.loads(response.read().decode("utf-8"))
 #  response = requests.post(
 #    url,
 #    headers=headers,
