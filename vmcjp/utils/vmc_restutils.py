@@ -1,6 +1,10 @@
 import requests
 import urllib.request
 import json
+import logging
+
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
 def post_request(url, headers, params):
   request = urllib.request.Request(
@@ -14,6 +18,7 @@ def post_request(url, headers, params):
 #    headers=headers,
 #    params=params
 #  )
+  logging.info(response.text)
   if response is not None:
     data = response.json()
     if response.status_code == 200:
