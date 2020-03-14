@@ -14,7 +14,7 @@ HEADERS = {"Content-Type": "application/json"}
 
 def login(refresh_token):
     uri = "/am/api/auth/api-tokens/authorize"
-    params = {"refresh_token": refresh_token}
+    query = {"refresh_token": refresh_token}
     
 #    response = requests.post(
 #        '{}{}'.format(LOGIN_URL, uri),
@@ -24,7 +24,7 @@ def login(refresh_token):
     data = post_request(
         '{}{}'.format(LOGIN_URL, uri),
         HEADERS,
-        params
+        query=query
     )
     now = time.time()
     
