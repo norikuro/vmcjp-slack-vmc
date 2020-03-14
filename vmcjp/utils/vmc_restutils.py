@@ -10,7 +10,7 @@ def post_request(url, headers, query=None, params=None):
   logging.info("!!! query: {}".format(query))
   if query is not None:
     _query = urllib.parse.urlencode(query)
-    _url = "{}?{}".format(url, query)
+    _url = "{}?{}".format(url, _query)
     logging.info("!!! url: {}".format(_url))
   if params is not None:
     data = json.dumps(params).encode("utf-8")
