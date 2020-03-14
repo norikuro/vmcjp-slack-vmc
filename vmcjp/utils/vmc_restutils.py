@@ -9,12 +9,15 @@ def post_request(url, headers, query=None, params=None):
     url = "{}?{}".format(url, query)
   if params is not None:
     data = json.dumps(params).encode("utf-8")
-    
+  else:
+    data = None
+
   request = urllib.request.Request(
     url,
     data=data, 
     headers=headers
   )
+  
 #  response = urllib.request.urlopen(request)
   with urllib.request.urlopen(request) as response:
     data = response.read().decode("utf-8")
