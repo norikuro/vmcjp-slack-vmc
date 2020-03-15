@@ -60,6 +60,7 @@ def get_sddcs(access_token, org_id):
 #        if response.status_code == 200:
 #            return sddcs
     if data is not None:
+        return data
 
 def sddc_name_and_id_list(access_token, org_id):
     sddcs = get_sddcs(access_token, org_id)
