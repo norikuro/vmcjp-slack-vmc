@@ -28,7 +28,7 @@ def login(refresh_token):
             "expire_time": now + data.get("expires_in") - 180 # minus 3 minutes for extra time befire expire the access_token
         }
 
-def get_org_id_by_token(refresh_token, org_id):
+def get_org_id_by_token(refresh_token):
     uri = "/am/api/auth/api-tokens/details"
     
     data = post_request(
@@ -40,7 +40,7 @@ def get_org_id_by_token(refresh_token, org_id):
         return data
 
 def validate_token(refresh_token, org_id):
-    data = login(refresh_token)
+    data = get_org_id_by_token(refresh_token)
     
     if data is not None:
         if data.get("orgId") == org_id:
