@@ -33,7 +33,8 @@ def get_org_id_by_token(refresh_token, org_id):
     
     data = post_request(
         '{}{}'.format(LOGIN_URL, uri),
-        HEADERS
+        HEADERS,
+        params={"tokenValue": refresh_token}
     )
 
 def get_sddcs(access_token, org_id):
