@@ -28,6 +28,14 @@ def login(refresh_token):
             "expire_time": now + data.get("expires_in") - 180 # minus 3 minutes for extra time befire expire the access_token
         }
 
+def get_org_id_by_token(refresh_token, org_id):
+    uri = "/am/api/auth/api-tokens/details"
+    
+    data = post_request(
+        '{}{}'.format(LOGIN_URL, uri),
+        HEADERS
+    )
+
 def get_sddcs(access_token, org_id):
     uri = "/orgs/{}/sddcs".format(org_id)
     headers = {"csp-auth-token": access_token}
@@ -36,6 +44,7 @@ def get_sddcs(access_token, org_id):
     data = get_request(
         '{}{}'.format(VMC_URL, uri),
         headers
+        
     )
     if data is not None:
         return data
