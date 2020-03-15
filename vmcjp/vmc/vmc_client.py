@@ -1,4 +1,4 @@
-import requests
+#import requests
 import json
 import time
 #import logging
@@ -46,15 +46,20 @@ def get_sddcs(access_token, org_id):
     headers = {"csp-auth-token": access_token}
     headers.update(HEADERS)
     
-    response = requests.get(
+    data = get_request(
         '{}{}'.format(VMC_URL, uri),
-        headers=headers
+        headers
     )
-    if response is not None:
-#        logging.info(response)
-        sddcs = response.json()
-        if response.status_code == 200:
-            return sddcs
+#    response = requests.get(
+#        '{}{}'.format(VMC_URL, uri),
+#        headers=headers
+#    )
+#    if response is not None:
+##        logging.info(response)
+#        sddcs = response.json()
+#        if response.status_code == 200:
+#            return sddcs
+    if data is not None:
 
 def sddc_name_and_id_list(access_token, org_id):
     sddcs = get_sddcs(access_token, org_id)
