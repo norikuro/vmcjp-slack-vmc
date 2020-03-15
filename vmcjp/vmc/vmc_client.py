@@ -36,6 +36,8 @@ def get_org_id_by_token(refresh_token, org_id):
         HEADERS,
         params={"tokenValue": refresh_token}
     )
+    if data is not None:
+        return data
 
 def get_sddcs(access_token, org_id):
     uri = "/orgs/{}/sddcs".format(org_id)
