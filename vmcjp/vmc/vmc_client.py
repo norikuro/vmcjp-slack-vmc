@@ -1,4 +1,3 @@
-#import requests
 import json
 import time
 #import logging
@@ -16,11 +15,6 @@ def login(refresh_token):
     uri = "/am/api/auth/api-tokens/authorize"
     query = {"refresh_token": refresh_token}
     
-#    response = requests.post(
-#        '{}{}'.format(LOGIN_URL, uri),
-#        headers=HEADERS,
-#      params = params
-#    )
     data = post_request(
         '{}{}'.format(LOGIN_URL, uri),
         HEADERS,
@@ -28,14 +22,7 @@ def login(refresh_token):
     )
     now = time.time()
     
-#    if response is not None:
     if data is not None:
-#        data = response.json()
-#        if response.status_code == 200:
-#            return {
-#                "access_token": data.get("access_token"),
-#                "expire_time": now + data.get("expires_in")
-#            }
         return {
             "access_token": data.get("access_token"),
             "expire_time": now + data.get("expires_in") - 180 # minus 3 minutes for extra time befire expire the access_token
@@ -50,15 +37,6 @@ def get_sddcs(access_token, org_id):
         '{}{}'.format(VMC_URL, uri),
         headers
     )
-#    response = requests.get(
-#        '{}{}'.format(VMC_URL, uri),
-#        headers=headers
-#    )
-#    if response is not None:
-##        logging.info(response)
-#        sddcs = response.json()
-#        if response.status_code == 200:
-#            return sddcs
     if data is not None:
         return data
 
