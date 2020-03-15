@@ -1,4 +1,3 @@
-#import requests
 import urllib.request
 import json
 
@@ -28,14 +27,6 @@ def get_request(url, headers):
     method = "GET",
     headers=headers
   )
-#  response = requests.get(
-#    url,
-#    headers=headers
-#  )
-#  if response is not None:
-#    data = response.json()
-#    if response.status_code == 200:
-#      return data
   with urllib.request.urlopen(request) as response:
     data = json.loads(response.read().decode("utf-8"))
     return data
