@@ -44,7 +44,6 @@ def get_sddcs(access_token, org_id):
     data = get_request(
         '{}{}'.format(VMC_URL, uri),
         headers
-        
     )
     if data is not None:
         return data
