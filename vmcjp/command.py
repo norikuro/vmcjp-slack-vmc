@@ -13,7 +13,7 @@ def lambda_handler(event, context):
     expire_time = event.get("expire_time")
     command = event.get("vmc_command")
     
-    if expire_time is None:
+    if expire_time is None and command is not "validate_token":
         data = login(event.get("token"))
         event.update(data)
         write_cred_db(
