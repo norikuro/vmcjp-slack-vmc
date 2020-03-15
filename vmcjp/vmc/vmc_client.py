@@ -39,6 +39,13 @@ def get_org_id_by_token(refresh_token, org_id):
     if data is not None:
         return data
 
+def validate_token(refresh_token, org_id):
+    data = login(refresh_token)
+    
+    if data is not None:
+        if data.get("orgId") == org_id:
+            return data.get("username")
+
 def get_sddcs(access_token, org_id):
     uri = "/orgs/{}/sddcs".format(org_id)
     headers = {"csp-auth-token": access_token}
