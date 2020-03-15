@@ -39,7 +39,7 @@ def get_org_id_by_token(refresh_token):
     if data is not None:
         return data
 
-def validate_token(refresh_token, org_id):
+def token_validation(refresh_token, org_id):
     data = get_org_id_by_token(refresh_token)
     
     if data is not None:
