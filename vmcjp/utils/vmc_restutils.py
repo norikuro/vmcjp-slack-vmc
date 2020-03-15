@@ -20,14 +20,22 @@ def post_request(url, headers, query=None, params=None):
   
   with urllib.request.urlopen(request) as response:
     data = json.loads(response.read().decode("utf-8"))
-  return data
+    return data
 
 def get_request(url, headers):
-  response = requests.get(
+  request = urllib.request.Request(
     url,
+    method = "GET",
     headers=headers
   )
-  if response is not None:
-    data = response.json()
-    if response.status_code == 200:
-      return data
+#  response = requests.get(
+#    url,
+#    headers=headers
+#  )
+#  if response is not None:
+#    data = response.json()
+#    if response.status_code == 200:
+#      return data
+  with urllib.request.urlopen(request) as response:
+    data = json.loads(response.read().decode("utf-8"))
+    return data
