@@ -1,15 +1,15 @@
 import time
-import logging
+#import logging
 
 from vmcjp.utils import cmd_const
 from vmcjp.slack.db import write_cred_db
 from vmcjp.vmc.vmc_client import login, sddc_list, token_validation
 
-logger = logging.getLogger()
-logger.setLevel(logging.INFO)
+#logger = logging.getLogger()
+#logger.setLevel(logging.INFO)
 
 def lambda_handler(event, context):
-    logging.info(event)
+#    logging.info(event)
     expire_time = event.get("expire_time")
     command = event.get("vmc_command")
     
