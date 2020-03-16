@@ -21,11 +21,12 @@ def post_request(url, headers, query=None, params=None):
   try:
     with urllib.request.urlopen(request) as response:
       data = json.loads(response.read().decode("utf-8"))
-      return data
   except urllib.error.HTTPError as err:
-    return None
+    data = None
   except urllib.error.URLError as err:
-    return None
+    data = None
+  finally:
+    return data
 
 def get_request(url, headers):
   request = urllib.request.Request(
@@ -37,8 +38,9 @@ def get_request(url, headers):
   try:
     with urllib.request.urlopen(request) as response:
       data = json.loads(response.read().decode("utf-8"))
-      return data
   except urllib.error.HTTPError as err:
-    return None
+    data = None
   except urllib.error.URLError as err:
-    return None
+    data = None
+  finally:
+    return data
