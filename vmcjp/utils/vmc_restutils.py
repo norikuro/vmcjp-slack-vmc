@@ -18,8 +18,9 @@ def post_request(url, headers, query=None, params=None):
   )
   
   with urllib.request.urlopen(request) as response:
-    data = json.loads(response.read().decode("utf-8"))
-    return data
+    if response.getcode() == 200:
+      data = json.loads(response.read().decode("utf-8"))
+      return data
 
 def get_request(url, headers):
   request = urllib.request.Request(
@@ -28,5 +29,6 @@ def get_request(url, headers):
     headers=headers
   )
   with urllib.request.urlopen(request) as response:
-    data = json.loads(response.read().decode("utf-8"))
-    return data
+    if response.getcode() == 200:
+      data = json.loads(response.read().decode("utf-8"))
+      return data
