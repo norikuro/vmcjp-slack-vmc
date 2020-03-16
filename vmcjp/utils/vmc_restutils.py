@@ -1,4 +1,5 @@
 import urllib.request
+import urllib.error
 import json
 
 def post_request(url, headers, query=None, params=None):
@@ -17,10 +18,14 @@ def post_request(url, headers, query=None, params=None):
     headers=headers
   )
   
-  with urllib.request.urlopen(request) as response:
-    if response.getcode() == 200:
+  try:
+    with urllib.request.urlopen(request) as response:
       data = json.loads(response.read().decode("utf-8"))
       return data
+  except urllib.error.HTTPError as err:
+    return None
+  except urllib.error.URLError as err:
+    return None
 
 def get_request(url, headers):
   request = urllib.request.Request(
@@ -28,7 +33,12 @@ def get_request(url, headers):
     method = "GET",
     headers=headers
   )
-  with urllib.request.urlopen(request) as response:
-    if response.getcode() == 200:
+  
+  try:
+    with urllib.request.urlopen(request) as response:
       data = json.loads(response.read().decode("utf-8"))
       return data
+  except urllib.error.HTTPError as err:
+    return None
+  except urllib.error.URLError as err:
+    return None
