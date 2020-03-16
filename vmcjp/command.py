@@ -43,12 +43,12 @@ def validate_token(event):
     )
 
 def list_sddcs(event):
-    list = sddc_list(
-        event.get("access_token"), 
-        event.get("org_id")
-    )
-#    return sddc_list(
+#    list = sddc_list(
 #        event.get("access_token"), 
 #        event.get("org_id")
 #    )
-    return list
+    return sddc_list(
+        event.get("access_token"), 
+        event.get("org_id")
+    )
+#    return list
