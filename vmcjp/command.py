@@ -62,3 +62,12 @@ def check_max_hosts(event):
         event.get("access_token"), 
         event.get("org_id")
     )
+    i = 0
+    for sddc in sddcs:
+        i += len(sddc.get("properties").get("values").get("sddcLimit"))
+    max_hosts = (sddclimit - 1) - i
+#    if max_hosts < 1:
+#        return max_hosts
+#    else:
+#        return 1 if max_hosts < 3 else max_hosts
+    return 4 #for test
