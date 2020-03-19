@@ -54,9 +54,11 @@ def list_sddcs(event):
 #    return list
 
 def check_max_hosts(event):
-    sddclimit = get_sddclimit(
-        event.get("access_token"), 
-        event.get("org_id")
+    sddclimit = int(
+        get_sddclimit(
+            event.get("access_token"), 
+            event.get("org_id")
+        )
     )
     sddcs = get_sddcs(
         event.get("access_token"), 
@@ -65,7 +67,7 @@ def check_max_hosts(event):
     
     i = 0
     for sddc in sddcs:
-        logging.info("!!! properties, {}".format(sddc.get("resource_config").get("esx_hosts")))
+        logging.info("!!! num_hosts, {}".format(len(sddc.get("resource_config").get("esx_hosts"))))
         i += len(sddc.get("resource_config").get("esx_hosts"))
     
     max_hosts = (sddclimit - 1) - i
