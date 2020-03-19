@@ -3,7 +3,7 @@ import time
 
 from vmcjp.utils import cmd_const
 from vmcjp.slack.db import write_cred_db
-from vmcjp.vmc.vmc_client import login, sddc_list, token_validation, get_max_num_hosts
+from vmcjp.vmc.vmc_client import login, sddc_list, token_validation
 
 #logger = logging.getLogger()
 #logger.setLevel(logging.INFO)
