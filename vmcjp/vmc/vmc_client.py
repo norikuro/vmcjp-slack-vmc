@@ -100,7 +100,4 @@ def get_sddclimit(access_token, org_id):
         update_headers(access_token)
     )
     if data is not None:
-        return data.get("properties").get("values").get("sddcLimit")
-
-def get_max_num_hosts():
-    
+        return data.get("properties").get("values").get("sddcLimit")    
