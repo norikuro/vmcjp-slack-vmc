@@ -101,4 +101,4 @@ def get_sddclimit(access_token, org_id):
         update_headers(access_token)
     )
     if data is not None:
-        return data.get("properties").get("values").get("sddcLimit")    
+        return int(data.get("properties").get("values").get("sddcLimit"))
