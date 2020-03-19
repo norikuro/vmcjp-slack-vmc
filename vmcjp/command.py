@@ -1,12 +1,12 @@
 import time
-#import logging
+import logging
 
 from vmcjp.utils import cmd_const
 from vmcjp.slack.db import write_cred_db
 from vmcjp.vmc.vmc_client import login, sddc_list, token_validation, get_sddcs, get_sddclimit
 
-#logger = logging.getLogger()
-#logger.setLevel(logging.INFO)
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
 def lambda_handler(event, context):
 #    logging.info(event)
@@ -65,6 +65,7 @@ def check_max_hosts(event):
     
     i = 0
     for sddc in sddcs:
+        logging.info("!!! properties, {}".format(sddc.get("properties")))
         i += len(sddc.get("properties").get("values").get("sddcLimit"))
     
     max_hosts = (sddclimit - 1) - i
