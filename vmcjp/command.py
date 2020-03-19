@@ -3,7 +3,7 @@ import time
 
 from vmcjp.utils import cmd_const
 from vmcjp.slack.db import write_cred_db
-from vmcjp.vmc.vmc_client import login, sddc_list, token_validation
+from vmcjp.vmc.vmc_client import login, sddc_list, token_validation, get_max_num_hosts
 
 #logger = logging.getLogger()
 #logger.setLevel(logging.INFO)
@@ -52,3 +52,6 @@ def list_sddcs(event):
         event.get("org_id")
     )
 #    return list
+
+def check_max_hosts(event):
+    get_max_num_hosts()
