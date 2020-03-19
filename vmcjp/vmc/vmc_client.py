@@ -88,16 +88,20 @@ def sddc_list(access_token, org_id):
                 "num_hosts": len(sddc.get("resource_config").get("esx_hosts"))
             } for sddc in sddcs
         ]
-    
-def get_sddclimit(access_token, org_id):
+
+def get_org(access_token, org_id):
     uri = "/orgs/{}".format(org_id)
-#    headers = {"csp-auth-token": access_token}
-#    headers.update(HEADERS)
     
     data = get_request(
         '{}{}'.format(VMC_URL, uri),
-#        headers
         update_headers(access_token)
     )
+    
+    if data is not None:
+        return data
+
+def get_sddclimit(access_token, org_id):
+    data = get_org(access_token, org_id)
+    
     if data is not None:
         return int(data.get("properties").get("values").get("sddcLimit"))
