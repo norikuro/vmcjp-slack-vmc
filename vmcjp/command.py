@@ -54,4 +54,7 @@ def list_sddcs(event):
 #    return list
 
 def check_max_hosts(event):
-    get_max_num_hosts()
+    sddclimit = get_sddclimit(
+        event.get("access_token"), 
+        event.get("org_id")
+    )
