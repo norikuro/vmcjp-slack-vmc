@@ -1,6 +1,6 @@
 import json
 import time
-#import logging
+import logging
 
 from vmcjp.utils.vmc_restutils import post_request, get_request
 
@@ -8,8 +8,8 @@ LOGIN_URL = "https://console.cloud.vmware.com/csp/gateway"
 VMC_URL = "https://vmc.vmware.com/vmc/api"
 HEADERS = {"Content-Type": "application/json"}
 
-#logger = logging.getLogger()
-#logger.setLevel(logging.INFO)
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
 def update_headers(access_token):
     headers = {"csp-auth-token": access_token}
@@ -61,6 +61,7 @@ def get_sddcs(access_token, org_id):
 #        headers
         update_headers(access_token)
     )
+    logging.info("!!! data = {}".format(data))
     if data is not None:
         return data
 
