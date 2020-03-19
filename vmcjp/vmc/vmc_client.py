@@ -82,3 +82,6 @@ def sddc_list(access_token, org_id):
                 "num_hosts": len(sddc.get("resource_config").get("esx_hosts"))
             } for sddc in sddcs
         ]
+
+def get_max_num_hosts():
+    
