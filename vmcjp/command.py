@@ -65,8 +65,8 @@ def check_max_hosts(event):
     
     i = 0
     for sddc in sddcs:
-        logging.info("!!! properties, {}".format(sddc.get("properties")))
-        i += len(sddc.get("properties").get("values").get("sddcLimit"))
+        logging.info("!!! properties, {}".format(sddc.get("resource_config").get("esx_hosts")))
+        i += len(sddc.get("resource_config").get("esx_hosts"))
     
     max_hosts = (sddclimit - 1) - i
     if max_hosts < 1:
