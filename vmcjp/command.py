@@ -76,7 +76,7 @@ def check_max_hosts(event):
 #    return 4 #for test
 
 def list_region(event):
-    resions = get_aws_region(event.get("access_token"), event.get("org_id"))
+    regions = get_aws_region(event.get("access_token"), event.get("org_id"))
     
     return [
         {
