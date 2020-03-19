@@ -105,3 +105,9 @@ def get_sddclimit(access_token, org_id):
     
     if data is not None:
         return int(data.get("properties").get("values").get("sddcLimit"))
+
+def get_aws_region(access_token, org_id):
+    data = get_org(access_token, org_id)
+    
+    if data is not None:
+        return data.get("properties").get("values").get("defaultAwsRegions").split(",")
