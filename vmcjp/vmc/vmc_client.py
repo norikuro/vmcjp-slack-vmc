@@ -61,7 +61,6 @@ def get_sddcs(access_token, org_id):
 #        headers
         update_headers(access_token)
     )
-    logging.info("!!! data = {}".format(data))
     if data is not None:
         return data
 
