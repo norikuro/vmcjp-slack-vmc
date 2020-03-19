@@ -11,6 +11,11 @@ HEADERS = {"Content-Type": "application/json"}
 #logger = logging.getLogger()
 #logger.setLevel(logging.INFO)
 
+def update_headers(access_token):
+    headers = {"csp-auth-token": access_token}
+    headers.update(HEADERS)
+    return headers
+
 def login(refresh_token):
     uri = "/am/api/auth/api-tokens/authorize"
     query = {"refresh_token": refresh_token}
@@ -48,12 +53,13 @@ def token_validation(refresh_token, org_id):
 
 def get_sddcs(access_token, org_id):
     uri = "/orgs/{}/sddcs".format(org_id)
-    headers = {"csp-auth-token": access_token}
-    headers.update(HEADERS)
+#    headers = {"csp-auth-token": access_token}
+#    headers.update(HEADERS)
     
     data = get_request(
         '{}{}'.format(VMC_URL, uri),
-        headers
+#        headers
+        update_headers(access_token)
     )
     if data is not None:
         return data
@@ -85,11 +91,13 @@ def sddc_list(access_token, org_id):
     
 def get_sddclimit(access_token, org_id):
     uri = "/orgs/{}".format(org_id)
-    headers = {"csp-auth-token": access_token}
-    headers.update(HEADERS)
+#    headers = {"csp-auth-token": access_token}
+#    headers.update(HEADERS)
+    
     data = get_request(
         '{}{}'.format(VMC_URL, uri),
-        headers
+#        headers
+        update_headers(access_token)
     )
     if data is not None:
         return data.get("properties").get("values").get("sddcLimit")
