@@ -130,7 +130,10 @@ def list_aws_account(access_token, org_id):
         return [
             {
                 "text": account.get("account_number")
-                "value": account.get("id")
+                "value": "{}+{}".format(
+                    account.get("account_number"), 
+                    account.get("id")
+                )
             } for account in accounts
         ]
             
