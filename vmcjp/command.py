@@ -96,7 +96,7 @@ def list_aws_account(event):
     if data is not None:
         return [
             {
-                "text": account.get("account_number")
+                "text": account.get("account_number"),
                 "value": "{}+{}".format(
                     account.get("account_number"), 
                     account.get("id")
