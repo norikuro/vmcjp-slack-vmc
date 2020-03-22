@@ -111,3 +111,15 @@ def get_aws_region(access_token, org_id):
     
     if data is not None:
         return data.get("properties").get("values").get("defaultAwsRegions").split(",")
+
+def get_connected_accounts(access_token, org_id):
+    uri = "/orgs/{}/account-link/connected-accounts".format(org_id)
+    
+    data = get_request(
+        '{}{}'.format(VMC_URL, uri),
+        update_headers(access_token)
+    )
+    
+    if data is not None:
+        return data
+    
