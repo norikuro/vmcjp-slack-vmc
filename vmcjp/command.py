@@ -75,7 +75,10 @@ def check_max_hosts(event):
     return 4 #for test
 
 def list_region(event):
-    regions = get_aws_region(event.get("access_token"), event.get("org_id"))
+    regions = get_aws_region(
+        event.get("access_token"), 
+        event.get("org_id")
+    )
     
     return [
         {
@@ -83,3 +86,20 @@ def list_region(event):
             "value": region
         } for region in regions
     ]
+
+def list_aws_account(event):
+    accounts = get_connected_accounts(
+        event.get("access_token"), 
+        event.get("org_id")
+    )
+    
+    if data is not None:
+        return [
+            {
+                "text": account.get("account_number")
+                "value": "{}+{}".format(
+                    account.get("account_number"), 
+                    account.get("id")
+                )
+            } for account in accounts
+        ]
