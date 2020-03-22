@@ -123,3 +123,14 @@ def get_connected_accounts(access_token, org_id):
     if data is not None:
         return data
     
+def list_aws_account(access_token, org_id):
+    accounts = get_connected_accounts(access_token, org_id)
+    
+    if data is not None:
+        return [
+            {
+                "text": account.get("account_number")
+                "value": account.get("id")
+            } for account in accounts
+        ]
+            
