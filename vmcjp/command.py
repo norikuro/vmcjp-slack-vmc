@@ -93,7 +93,7 @@ def list_aws_account(event):
         event.get("org_id")
     )
     
-    if data is not None:
+    if accounts is not None:
         return [
             {
                 "text": account.get("account_number"),
