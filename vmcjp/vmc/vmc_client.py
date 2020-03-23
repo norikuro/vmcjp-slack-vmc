@@ -130,3 +130,5 @@ def get_vpc_map(access_token, org_id, linked_account_id, region):
         update_headers(access_token),
         params = params
     )
+
+    return data
