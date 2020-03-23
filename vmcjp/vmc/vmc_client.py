@@ -41,8 +41,8 @@ def get_org_id_by_token(refresh_token):
         HEADERS,
         params={"tokenValue": refresh_token}
     )
-    if data is not None:
-        return data
+    
+    return data
 
 def token_validation(refresh_token, org_id):
     data = get_org_id_by_token(refresh_token)
@@ -61,8 +61,8 @@ def get_sddcs(access_token, org_id):
 #        headers
         update_headers(access_token)
     )
-    if data is not None:
-        return data
+    
+    return data
 
 def sddc_name_and_id_list(access_token, org_id):
     sddcs = get_sddcs(access_token, org_id)
@@ -97,8 +97,7 @@ def get_org(access_token, org_id):
         update_headers(access_token)
     )
     
-    if data is not None:
-        return data
+    return data
 
 def get_sddclimit(access_token, org_id):
     data = get_org(access_token, org_id)
@@ -120,8 +119,7 @@ def get_connected_accounts(access_token, org_id):
         update_headers(access_token)
     )
     
-    if data is not None:
-        return data
+    return data
 
 def get_vpcs(access_token, org_id, linked_account_id, region):
     uri = "/orgs/{}/account-link/compatible-subnets".format(org_id)
@@ -132,3 +130,5 @@ def get_vpcs(access_token, org_id, linked_account_id, region):
         update_headers(access_token)
         params = params
     )
+    
+    return data
