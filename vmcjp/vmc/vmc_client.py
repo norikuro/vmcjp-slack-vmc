@@ -121,7 +121,7 @@ def get_connected_accounts(access_token, org_id):
     
     return data
 
-def get_vpcs(access_token, org_id, linked_account_id, region):
+def get_vpc_map(access_token, org_id, linked_account_id, region):
     uri = "/orgs/{}/account-link/compatible-subnets".format(org_id)
     params = {"linkedAccountId": linked_account_id, "region": region}
     
@@ -130,5 +130,3 @@ def get_vpcs(access_token, org_id, linked_account_id, region):
         update_headers(access_token)
         params = params
     )
-    
-    return data
