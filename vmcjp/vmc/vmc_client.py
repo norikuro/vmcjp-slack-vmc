@@ -127,6 +127,6 @@ def get_vpc_map(access_token, org_id, linked_account_id, region):
     
     data = get_request(
         '{}{}'.format(VMC_URL, uri),
-        update_headers(access_token)
+        update_headers(access_token),
         params = params
     )
