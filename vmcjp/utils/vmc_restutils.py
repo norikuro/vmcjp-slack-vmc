@@ -1,10 +1,10 @@
 import urllib.request
 import urllib.error
 import json
-import logging
+#import logging
 
-logger = logging.getLogger()
-logger.setLevel(logging.INFO)
+#logger = logging.getLogger()
+#logger.setLevel(logging.INFO)
 
 def post_request(url, headers, query=None, params=None):
   if query is not None:
@@ -36,7 +36,6 @@ def get_request(url, headers, params=None):
   if params is not None:
     query = urllib.parse.urlencode(params)
     url = "{}?{}".format(url, query)
-    logging.info("!!! url = {}".format(url))
     
   request = urllib.request.Request(
     url,
@@ -48,10 +47,8 @@ def get_request(url, headers, params=None):
     with urllib.request.urlopen(request) as response:
       data = json.loads(response.read().decode("utf-8"))
   except urllib.error.HTTPError as err:
-    logging.info("!!! http error" )
     data = None
   except urllib.error.URLError as err:
-    logging.info("!!! url error" )
     data = None
   finally:
     return data
