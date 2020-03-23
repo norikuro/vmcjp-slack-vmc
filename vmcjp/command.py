@@ -103,3 +103,11 @@ def list_aws_account(event):
                 )
             } for account in accounts
         ]
+
+def list_vpc(event):
+    return [
+        {
+            "text": vpc,
+            "value": vpc
+        } for vpc in vpcs
+    ]
