@@ -3,7 +3,7 @@ import time
 
 from vmcjp.utils import cmd_const
 from vmcjp.slack.db import write_cred_db
-from vmcjp.vmc.vmc_client import login, sddc_list, token_validation, get_sddcs, get_sddclimit, get_aws_region, get_connected_accounts
+from vmcjp.vmc.vmc_client import login, sddc_list, token_validation, get_sddcs, get_sddclimit, get_aws_region, get_connected_accounts, get_vpc_map
 
 #logger = logging.getLogger()
 #logger.setLevel(logging.INFO)
@@ -105,9 +105,22 @@ def list_aws_account(event):
         ]
 
 def list_vpc(event):
+    data = get_vpc_map(
+        event.get("access_token"),
+        event.get("org_id"),
+        event.get("linked_account_id"),
+        event.get("region"),
+    )
+    vpc_map = data.get("vpc_map")
+    vpcs = data.get("vpc_map").keys()
+    
     return [
         {
-            "text": vpc,
+            "text": "{}, {}, {}".format(
+                vpc, 
+                vpc_map.get(vpc).get("description"), 
+                vpc_map.get(vpc).get("cidr_block")
+            ),
             "value": vpc
         } for vpc in vpcs
     ]
