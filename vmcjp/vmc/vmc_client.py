@@ -125,6 +125,7 @@ def get_connected_accounts(access_token, org_id):
 
 def get_vpcs(access_token, org_id, linked_account_id, region):
     uri = "/orgs/{}/account-link/compatible-subnets".format(org_id)
+    params = {"linkedAccountId": linked_account_id, "region": region}
     
     data = get_request(
         '{}{}'.format(VMC_URL, uri),
