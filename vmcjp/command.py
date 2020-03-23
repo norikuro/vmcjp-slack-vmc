@@ -129,7 +129,7 @@ def list_subnet(event):
     data = get_vpc_map(
         event.get("access_token"),
         event.get("org_id"),
-        event.get("linked_account_id"),
+        event.get("connected_account_id"),
         event.get("region"),
     )
     logging.info("!!! data: {}".format(data))
