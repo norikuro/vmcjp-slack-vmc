@@ -122,3 +122,12 @@ def get_connected_accounts(access_token, org_id):
     
     if data is not None:
         return data
+
+def get_vpcs(access_token, org_id, linked_account_id, region):
+    uri = "/orgs/{}/account-link/compatible-subnets".format(org_id)
+    
+    data = get_request(
+        '{}{}'.format(VMC_URL, uri),
+        update_headers(access_token)
+        params = params
+    )
