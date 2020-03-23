@@ -124,3 +124,24 @@ def list_vpc(event):
             "value": vpc
         } for vpc in vpcs
     ]
+
+def list_subnet(event):
+    data = get_vpc_map(
+        event.get("access_token"),
+        event.get("org_id"),
+        event.get("linked_account_id"),
+        event.get("region"),
+    )
+    vpc = data.get("vpc_map").get("vpc_id")
+    subnets = vpc.get("subnets")
+    
+    return [
+        {
+            "text": "{}, {}, {}".format(
+                subnet.get("subnet_id"), 
+                subnet.get("availability_zone"), 
+                subnet.get("subnet_cidr_block")
+            ),
+            "value": subnet.get("subnet_id")
+        } for subnet in subnets if subnet.get("compatible")
+    ]
