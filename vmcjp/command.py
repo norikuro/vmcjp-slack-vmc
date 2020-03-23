@@ -132,11 +132,10 @@ def list_subnet(event):
         event.get("connected_account_id"),
         event.get("region"),
     )
-    logging.info("!!! data: {}".format(data))
     vpc_map = data.get("vpc_map")
-    logging.info("!!! vpc_map: {}".format(vpc_map))
-    vpc = vpc_map.get("vpc_id")
+    vpc = vpc_map.get(event.get("vpc_id"))
     subnets = vpc.get("subnets")
+    logging.info("!!! subnets -> ".format(subnets))
     
     return [
         {
