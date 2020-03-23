@@ -28,7 +28,11 @@ def post_request(url, headers, query=None, params=None):
   finally:
     return data
 
-def get_request(url, headers):
+def get_request(url, headers, params=None):
+  if params is not None:
+    query = urllib.parse.urlencode(params)
+    url = "{}?{}".format(url, query)
+    
   request = urllib.request.Request(
     url,
     method = "GET",
