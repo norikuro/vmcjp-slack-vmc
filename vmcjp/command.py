@@ -80,11 +80,15 @@ def list_region(event):
         event.get("org_id")
     )
     
+    region_ids = regions.keys()
     return [
         {
-            "text": region,
-            "value": region
-        } for region in regions
+            "text": regions.get(region_id),
+            "value": region_id
+#            "text": region,
+#            "value": region
+        } for region_id in region_ids
+#        } for region in regions
     ]
 
 def list_aws_account(event):
