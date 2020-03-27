@@ -106,10 +106,17 @@ def get_sddclimit(access_token, org_id):
         return int(data.get("properties").get("values").get("sddcLimit"))
 
 def get_aws_region(access_token, org_id):
-    data = get_org(access_token, org_id)
+    uri = "/orgs/{}/sddcs/provision-spec".format(org_id)
+#    data = get_org(access_token, org_id)
+    
+    data = get_request(
+        '{}{}'.format(VMC_URL, uri),
+        update_headers(access_token)
+    )
     
     if data is not None:
-        return data.get("properties").get("values").get("defaultAwsRegions").split(",")
+#        return data.get("properties").get("values").get("defaultAwsRegions").split(",")
+        return data.get("provider").get("AWS").get("region_display_names")
 
 def get_connected_accounts(access_token, org_id):
     uri = "/orgs/{}/account-link/connected-accounts".format(org_id)
