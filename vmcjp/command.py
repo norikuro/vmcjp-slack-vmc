@@ -72,7 +72,7 @@ def check_max_hosts(event):
 #        return max_hosts
 #    else:
 #        return 1 if max_hosts < 3 else max_hosts
-    return 4 #for test
+    return 10 #for test
 
 def list_region(event):
     regions = get_aws_region(
