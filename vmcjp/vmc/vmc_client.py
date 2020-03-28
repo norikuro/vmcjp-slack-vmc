@@ -184,6 +184,8 @@ def create_sddc(
         update_headers(access_token),
         params = params
     )
+    
+    return data
 
 def account_link_config(link_aws):
     if link_aws:
