@@ -142,4 +142,9 @@ def get_vpc_map(access_token, org_id, linked_account_id, region):
 
 def create_sddc(access_token, org_id):
     uri = "/orgs/{}/sddcs".format(org_id)
-    data = post_request()
+    
+    data = post_request(
+        '{}{}'.format(VMC_URL, uri),
+        update_headers(access_token),
+        params = params
+    )
