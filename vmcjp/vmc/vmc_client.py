@@ -149,8 +149,13 @@ def create_sddc(
     deployment_type=None, 
     host_instance_type=None, 
     sddc_name, 
-    num_hosts
-    
+    num_hosts, 
+    provider, 
+    region, 
+    sddc_type=None, 
+    size, 
+    storage_capacity=None, 
+    vpc_cidr
 ):
     uri = "/orgs/{}/sddcs".format(org_id)
     
@@ -165,13 +170,13 @@ def create_sddc(
         "name": sddc_name,
         "num_hosts": num_hosts,
         "one_node_reduced_capacity": false,
-        "provider": "AWS",
-        "region": "ap-northeast-1",
-        "sddc_type": "1NODE",
-        "size": "",
+        "provider": provider,
+        "region": region,
+        "sddc_type": sddc_type,
+        "size": size,
         "skip_creating_vxlan": False,
-        "storage_capacity": 0,
-        "vpc_cidr": "10.4.0.0/16"
+        "storage_capacity": storage_capacity,
+        "vpc_cidr": vpc_cidr
     }
     
     data = post_request(
