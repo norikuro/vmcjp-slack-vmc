@@ -26,7 +26,10 @@ def post_request(url, headers, query=None, params=None):
     with urllib.request.urlopen(request) as response:
       data = json.loads(response.read().decode("utf-8"))
   except urllib.error.HTTPError as err:
-    data = None
+    if err.code == 400:
+      data = json.loads(response.read().decode("utf-8"))
+    else:
+      data = None
   except urllib.error.URLError as err:
     data = None
   finally:
