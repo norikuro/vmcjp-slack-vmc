@@ -25,15 +25,14 @@ def post_request(url, headers, query=None, params=None):
   try:
     with urllib.request.urlopen(request) as response:
       data = json.loads(response.read().decode("utf-8"))
+      return data
   except urllib.error.HTTPError as err:
     if err.code in [400, 401, 403, 404]:
-      data = json.loads(response.read().decode("utf-8"))
+      return data
     else:
-      data = None
+      return None
   except urllib.error.URLError as err:
-    data = None
-  finally:
-    return data
+    return None
 
 def get_request(url, headers, params=None):
   if params is not None:
