@@ -26,7 +26,7 @@ def post_request(url, headers, query=None, params=None):
     with urllib.request.urlopen(request) as response:
       data = json.loads(response.read().decode("utf-8"))
   except urllib.error.HTTPError as err:
-    if err.code == 400:
+    if err.code in [400, 401, 403, 404]:
       data = json.loads(response.read().decode("utf-8"))
     else:
       data = None
