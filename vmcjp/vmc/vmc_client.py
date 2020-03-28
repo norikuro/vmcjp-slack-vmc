@@ -164,7 +164,7 @@ def create_sddc(
         "account_link_sddc_config": account_link_sddc_config(
             connected_account_id, 
             customer_subnet_id
-        ),
+        ) if link_aws else None,
         "deployment_type": deployment_type,
         "host_instance_type": host_instance_type,
         "name": sddc_name,
