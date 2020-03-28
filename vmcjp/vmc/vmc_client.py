@@ -140,11 +140,58 @@ def get_vpc_map(access_token, org_id, linked_account_id, region):
 
     return data
 
-def create_sddc(access_token, org_id):
+def create_sddc(access_token, org_id, link_aws):
     uri = "/orgs/{}/sddcs".format(org_id)
+    
+    params = {
+        "account_link_config": account_link_config(link_aws),
+        "account_link_sddc_config": 
+        [ 
+            {
+                "connected_account_id": "",
+                "customer_subnet_ids": 
+                [
+                    ""
+                ]
+            }
+        ],
+        "deployment_type": "",
+        "host_instance_type": "I3_METAL",
+        "name": "test sddc",
+        "num_hosts": 1,
+        "one_node_reduced_capacity": false,
+        "provider": "AWS",
+        "region": "ap-northeast-1",
+        "sddc_type": "1NODE",
+        "size": "",
+        "skip_creating_vxlan": False,
+        "storage_capacity": 0,
+        "vpc_cidr": "10.4.0.0/16"
+    }
     
     data = post_request(
         '{}{}'.format(VMC_URL, uri),
         update_headers(access_token),
         params = params
     )
+
+def account_link_config(link_aws):
+    if link_aws:
+        return {
+            "delay_account_link": True
+        }
+    else:
+        return {
+            "delay_account_link": False
+        }
+
+def account_link_sddc_config(connected_account_id, ):
+    return [
+        {
+            "connected_account_id": connected_account_id,
+            "customer_subnet_ids": 
+            [
+                ""
+            ]
+        }
+    ]
