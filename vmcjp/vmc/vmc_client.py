@@ -140,25 +140,30 @@ def get_vpc_map(access_token, org_id, linked_account_id, region):
 
     return data
 
-def create_sddc(access_token, org_id, link_aws):
+def create_sddc(
+    access_token, 
+    org_id, 
+    link_aws, 
+    connected_account_id=None, 
+    customer_subnet_id=None, 
+    deployment_type=None, 
+    host_instance_type=None, 
+    sddc_name, 
+    num_hosts
+    
+):
     uri = "/orgs/{}/sddcs".format(org_id)
     
     params = {
         "account_link_config": account_link_config(link_aws),
-        "account_link_sddc_config": 
-        [ 
-            {
-                "connected_account_id": "",
-                "customer_subnet_ids": 
-                [
-                    ""
-                ]
-            }
-        ],
-        "deployment_type": "",
-        "host_instance_type": "I3_METAL",
-        "name": "test sddc",
-        "num_hosts": 1,
+        "account_link_sddc_config": account_link_sddc_config(
+            connected_account_id, 
+            customer_subnet_id
+        ),
+        "deployment_type": deployment_type,
+        "host_instance_type": host_instance_type,
+        "name": sddc_name,
+        "num_hosts": num_hosts,
         "one_node_reduced_capacity": false,
         "provider": "AWS",
         "region": "ap-northeast-1",
@@ -185,13 +190,13 @@ def account_link_config(link_aws):
             "delay_account_link": False
         }
 
-def account_link_sddc_config(connected_account_id, ):
+def account_link_sddc_config(connected_account_id, customer_subnet_id):
     return [
         {
             "connected_account_id": connected_account_id,
             "customer_subnet_ids": 
             [
-                ""
+                customer_subnet_id
             ]
         }
     ]
