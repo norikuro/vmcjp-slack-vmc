@@ -65,11 +65,6 @@ def get_request(url, headers, params=None):
   except urllib.error.HTTPError as err:
     if err.code in [400, 401, 403, 404]:
       if data.get("error_messages") is not None:
-        data.update(
-          {
-            "error_messages": data.pop("error_messages")[0]
-          }
-        )
         return data
       elif data.get("message") is not None:
         data.update(
