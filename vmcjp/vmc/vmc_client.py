@@ -27,7 +27,7 @@ def login(refresh_token):
     )
     now = time.time()
     
-    if data is not None and data.get("error_messages") is None:
+    if data.get("error_messages") is None:
         return {
             "access_token": data.get("access_token"),
             "expire_time": now + data.get("expires_in") - 180 # minus 3 minutes for extra time befire expire the access_token
@@ -42,12 +42,13 @@ def get_org_id_by_token(refresh_token):
         params={"tokenValue": refresh_token}
     )
     
-    return data
+    if data.get("error_messages") is None:
+        return data
 
 def token_validation(refresh_token, org_id):
     data = get_org_id_by_token(refresh_token)
     
-    if data is not None and data.get("error_messages") is None:
+    if data.get("error_messages") is None:
         if data.get("orgId") == org_id:
             return data.get("username")
 
@@ -62,7 +63,8 @@ def get_sddcs(access_token, org_id):
         update_headers(access_token)
     )
     
-    return data
+    if data.get("error_messages") is None:
+        return data
 
 def sddc_name_and_id_list(access_token, org_id):
     sddcs = get_sddcs(access_token, org_id)
@@ -97,7 +99,8 @@ def get_org(access_token, org_id):
         update_headers(access_token)
     )
     
-    return data
+    if data.get("error_messages") is None:
+        return data
 
 def get_sddclimit(access_token, org_id):
     data = get_org(access_token, org_id)
@@ -114,7 +117,7 @@ def get_aws_region(access_token, org_id):
         update_headers(access_token)
     )
     
-    if data is not None and data.get("error_messages") is None:
+    if data.get("error_messages") is None:
 #        return data.get("properties").get("values").get("defaultAwsRegions").split(",")
         return data.get("provider").get("AWS").get("region_display_names")
 
@@ -126,7 +129,8 @@ def get_connected_accounts(access_token, org_id):
         update_headers(access_token)
     )
     
-    return data
+    if data.get("error_messages") is None:
+        return data
 
 def get_vpc_map(access_token, org_id, linked_account_id, region):
     uri = "/orgs/{}/account-link/compatible-subnets".format(org_id)
@@ -137,8 +141,9 @@ def get_vpc_map(access_token, org_id, linked_account_id, region):
         update_headers(access_token),
         params = params
     )
-
-    return data
+    
+    if data.get("error_messages") is None:
+        return data
 
 def create_sddc(
     access_token, 
@@ -185,7 +190,8 @@ def create_sddc(
         params = params
     )
     
-    return data
+    if data.get("error_messages") is None:
+        return data
 
 def account_link_config(link_aws):
     if link_aws:
