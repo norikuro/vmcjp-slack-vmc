@@ -114,7 +114,7 @@ def get_org(access_token, org_id):
     
     data = get_request(
         '{}{}'.format(VMC_URL, uri),
-        update_headers(access_token)
+        _update_headers(access_token)
     )
     
     #return dict
