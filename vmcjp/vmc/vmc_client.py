@@ -169,9 +169,9 @@ def create_sddc(
     link_aws,
     connected_account_id=None, 
     customer_subnet_id=None, 
-    deployment_type=None#, 
+    deployment_type=None, 
+    host_instance_type=None#, 
 ):
-#    host_instance_type=None, 
 #    sddc_name, 
 #    num_hosts, 
 #    provider, 
