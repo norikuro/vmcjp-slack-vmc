@@ -60,7 +60,7 @@ def token_validation(refresh_token, org_id):
         #return dict
         return data
 
-def get_sddcs(access_token, org_id):
+def _get_sddcs(access_token, org_id):
     uri = "/orgs/{}/sddcs".format(org_id)
 #    headers = {"csp-auth-token": access_token}
 #    headers.update(HEADERS)
@@ -75,7 +75,7 @@ def get_sddcs(access_token, org_id):
     return data
 
 def sddc_name_and_id_list(access_token, org_id):
-    sddcs = get_sddcs(access_token, org_id)
+    sddcs = _get_sddcs(access_token, org_id)
     
     if data.get("error_messages") is None:
         #return list
@@ -93,7 +93,7 @@ def sddc_name_and_id_list(access_token, org_id):
         return data
 
 def sddc_list(access_token, org_id):
-    sddcs = get_sddcs(access_token, org_id)
+    sddcs = _get_sddcs(access_token, org_id)
     
     if data.get("error_messages") is None:
         #return list
