@@ -37,15 +37,21 @@ def post_request(url, headers, query=None, params=None):
           }
         )
       else:
-        return None
+        return {
+          "error_messages": "Failed to send/get request, something wrong!"
+        }
     else:
-      return None
+      return {
+        "error_messages": "Failed to send/get request, something wrong!"
+      }
   except urllib.error.URLError as err:
     reason = err.reason
     if reason is not None:
       return {"error_messages": reason}
     else:
-      return None
+      return {
+        "error_messages": "Failed to send/get request, something wrong!"
+      }
 
 def get_request(url, headers, params=None):
   if params is not None:
@@ -73,12 +79,18 @@ def get_request(url, headers, params=None):
           }
         )
       else:
-        return None
+        return {
+          "error_messages": "Failed to send/get request, something wrong!"
+        }
     else:
-      return None
+      return {
+        "error_messages": "Failed to send/get request, something wrong!"
+      }
   except urllib.error.URLError as err:
     reason = err.reason
     if reason is not None:
       return {"error_messages": reason}
     else:
-      return None
+      return {
+        "error_messages": "Failed to send/get request, something wrong!"
+      }
