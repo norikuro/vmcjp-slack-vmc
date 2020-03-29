@@ -166,20 +166,21 @@ def get_vpc_map(access_token, org_id, linked_account_id, region):
 def create_sddc(
     access_token,
     org_id, 
-    link_aws, 
-    connected_account_id=None, 
-    customer_subnet_id=None, 
-    deployment_type=None, 
-    host_instance_type=None, 
-    sddc_name, 
-    num_hosts, 
-    provider, 
-    region, 
-    sddc_type=None, 
-    size, 
-    storage_capacity=None, 
-    vpc_cidr
-):
+    link_aws#,
+):  
+#    connected_account_id=None, 
+#    customer_subnet_id=None, 
+#    deployment_type=None, 
+#    host_instance_type=None, 
+#    sddc_name, 
+#    num_hosts, 
+#    provider, 
+#    region, 
+#    sddc_type=None, 
+#    size, 
+#    storage_capacity=None, 
+#    vpc_cidr
+#):
     print("!! something")
 #    uri = "/orgs/{}/sddcs".format(org_id)
 #    
