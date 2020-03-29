@@ -164,10 +164,10 @@ def get_vpc_map(access_token, org_id, linked_account_id, region):
     return data
 
 def create_sddc(
-    access_token,
-    org_id, 
-    link_aws#,
+    access_token#,
 ):  
+#    org_id, 
+#    link_aws,
 #    connected_account_id=None, 
 #    customer_subnet_id=None, 
 #    deployment_type=None, 
