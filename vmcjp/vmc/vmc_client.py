@@ -11,7 +11,7 @@ HEADERS = {"Content-Type": "application/json"}
 #logger = logging.getLogger()
 #logger.setLevel(logging.INFO)
 
-def update_headers(access_token):
+def _update_headers(access_token):
     headers = {"csp-auth-token": access_token}
     headers.update(HEADERS)
     return headers
