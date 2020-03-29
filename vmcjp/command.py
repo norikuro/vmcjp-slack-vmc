@@ -38,10 +38,12 @@ def _expired(expire_time):
     return now > expire_time
 
 def validate_token(event):
-    return token_validation(
-        event.get("token"),
-        event.get("org_id")
-    )
+    return {
+        "user_name": token_validation(
+            event.get("token"),
+            event.get("org_id")
+        )
+    }
 
 def list_sddcs(event):
 #    list = sddc_list(
