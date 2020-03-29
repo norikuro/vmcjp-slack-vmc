@@ -170,9 +170,9 @@ def create_sddc(
     connected_account_id=None, 
     customer_subnet_id=None, 
     deployment_type=None, 
-    host_instance_type=None#, 
+    host_instance_type=None, 
+    sddc_name#, 
 ):
-#    sddc_name, 
 #    num_hosts, 
 #    provider, 
 #    region, 
