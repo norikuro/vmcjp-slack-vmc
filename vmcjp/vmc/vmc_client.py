@@ -37,7 +37,7 @@ def login(refresh_token):
         #return dict
         return data
 
-def get_org_id_by_token(refresh_token):
+def _get_org_id_by_token(refresh_token):
     uri = "/am/api/auth/api-tokens/details"
     
     data = post_request(
@@ -50,7 +50,7 @@ def get_org_id_by_token(refresh_token):
     return data
 
 def token_validation(refresh_token, org_id):
-    data = get_org_id_by_token(refresh_token)
+    data = _get_org_id_by_token(refresh_token)
     
     if data.get("error_messages") is None:
         if data.get("orgId") == org_id:
