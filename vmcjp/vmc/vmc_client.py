@@ -167,9 +167,9 @@ def create_sddc(
     access_token,
     org_id, 
     link_aws,
-    connected_account_id=None#, 
+    connected_account_id=None, 
+    customer_subnet_id=None#, 
 ):
-#    customer_subnet_id=None, 
 #    deployment_type=None, 
 #    host_instance_type=None, 
 #    sddc_name, 
