@@ -59,7 +59,7 @@ def token_validation(refresh_token, org_id):
         #return dict
         return data
 
-def _get_sddcs(access_token, org_id):
+def get_sddcs(access_token, org_id):
     uri = "/orgs/{}/sddcs".format(org_id)
     
     data = get_request(
@@ -70,7 +70,7 @@ def _get_sddcs(access_token, org_id):
     return data
 
 def sddc_name_and_id_list(access_token, org_id):
-    sddcs = _get_sddcs(access_token, org_id)
+    sddcs = get_sddcs(access_token, org_id)
     
     if data.get("error_messages") is None:
         #return list
@@ -88,7 +88,7 @@ def sddc_name_and_id_list(access_token, org_id):
         return data
 
 def sddc_list(access_token, org_id):
-    sddcs = _get_sddcs(access_token, org_id)
+    sddcs = get_sddcs(access_token, org_id)
     
     if data.get("error_messages") is None:
         #return list
