@@ -14,30 +14,22 @@ def lambda_handler(event, context):
     expire_time = event.get("expire_time")
     command = event.get("vmc_command")
     
-#    if expire_time is None and command != "validate_token":
-#        data = login(event.get("token"))
-#        event.update(data)
-#        write_cred_db(
-#            event.get("db_url"),
-#            event.get("user_id"),
-#            data
-#        )
-#    elif expire_time is not None and _expired(expire_time):
-#        data = login(event.get("token"))
-#        event.update(data)
-#        write_cred_db(
-#            event.get("db_url"),
-#            event.get("user_id"),
-#            data
-#        )
-
-    data = login(event.get("token")) #for test
-    event.update(data)
-    write_cred_db(
-        event.get("db_url"),
-        event.get("user_id"),
-        data
-    )
+    if expire_time is None and command != "validate_token":
+        data = login(event.get("token"))
+        event.update(data)
+        write_cred_db(
+            event.get("db_url"),
+            event.get("user_id"),
+            data
+        )
+    elif expire_time is not None and _expired(expire_time):
+        data = login(event.get("token"))
+        event.update(data)
+        write_cred_db(
+            event.get("db_url"),
+            event.get("user_id"),
+            data
+        )
     
     return eval(event.get("vmc_command"))(event)
 
@@ -94,10 +86,7 @@ def list_region(event):
         {
             "text": regions.get(region_id),
             "value": region_id
-#            "text": region,
-#            "value": region
         } for region_id in region_ids
-#        } for region in regions
     ]
 
 def list_aws_account(event):
