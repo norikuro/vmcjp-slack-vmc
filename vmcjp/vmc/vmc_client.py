@@ -163,8 +163,10 @@ def get_vpc_map(access_token, org_id, linked_account_id, region):
     #return dict
     return data
 
-#def create_sddc(
-#    access_token, 
+def create_sddc(
+    access_token#,
+):
+    print("something")
 #    org_id, 
 #    link_aws, 
 #    connected_account_id=None, 
