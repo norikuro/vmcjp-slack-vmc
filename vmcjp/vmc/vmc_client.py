@@ -57,7 +57,8 @@ def token_validation(refresh_token, org_id):
             return data.get("username")
     else:
         #return dict
-        return data
+        raise Exception("!!! error---")
+#        return data
 
 def get_sddcs(access_token, org_id):
     uri = "/orgs/{}/sddcs".format(org_id)
