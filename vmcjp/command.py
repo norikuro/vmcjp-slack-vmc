@@ -21,7 +21,7 @@ def lambda_handler(event, context):
             event.get("user_id"),
             data
         )
-    elif expire_time is not None and expired(expire_time):
+    elif expire_time is not None and _expired(expire_time):
         data = login(event.get("token"))
         event.update(data)
         write_cred_db(
@@ -32,7 +32,7 @@ def lambda_handler(event, context):
     
     return eval(event.get("vmc_command"))(event)
 
-def expired(expire_time):
+def _expired(expire_time):
     now = time.time()
     return now > expire_time
 
