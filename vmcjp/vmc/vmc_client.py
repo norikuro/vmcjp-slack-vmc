@@ -163,53 +163,53 @@ def get_vpc_map(access_token, org_id, linked_account_id, region):
     #return dict
     return data
 
-def create_sddc(
-    access_token, 
-    org_id, 
-    link_aws, 
-    connected_account_id=None, 
-    customer_subnet_id=None, 
-    deployment_type=None, 
-    host_instance_type=None, 
-    sddc_name, 
-    num_hosts, 
-    provider, 
-    region, 
-    sddc_type=None, 
-    size, 
-    storage_capacity=None, 
-    vpc_cidr
-):
-    uri = "/orgs/{}/sddcs".format(org_id)
-    
-    params = {
-        "account_link_config": _account_link_config(link_aws),
-        "account_link_sddc_config": _account_link_sddc_config(
-            connected_account_id, 
-            customer_subnet_id
-        ) if link_aws else None,
-        "deployment_type": deployment_type,
-        "host_instance_type": host_instance_type,
-        "name": sddc_name,
-        "num_hosts": num_hosts,
-        "one_node_reduced_capacity": false,
-        "provider": provider,
-        "region": region,
-        "sddc_type": sddc_type,
-        "size": size,
-        "skip_creating_vxlan": False,
-        "storage_capacity": storage_capacity,
-        "vpc_cidr": vpc_cidr
-    }
-    
-    data = post_request(
-        '{}{}'.format(VMC_URL, uri),
-        _update_headers(access_token),
-        params = params
-    )
-    
-    #return dict
-    return data
+#def create_sddc(
+#    access_token, 
+#    org_id, 
+#    link_aws, 
+#    connected_account_id=None, 
+#    customer_subnet_id=None, 
+#    deployment_type=None, 
+#    host_instance_type=None, 
+#    sddc_name, 
+#    num_hosts, 
+#    provider, 
+#    region, 
+#    sddc_type=None, 
+#    size, 
+#    storage_capacity=None, 
+#    vpc_cidr
+#):
+#    uri = "/orgs/{}/sddcs".format(org_id)
+#    
+#    params = {
+#        "account_link_config": _account_link_config(link_aws),
+#        "account_link_sddc_config": _account_link_sddc_config(
+#            connected_account_id, 
+#            customer_subnet_id
+#        ) if link_aws else None,
+#        "deployment_type": deployment_type,
+#        "host_instance_type": host_instance_type,
+#        "name": sddc_name,
+#        "num_hosts": num_hosts,
+#        "one_node_reduced_capacity": false,
+#        "provider": provider,
+#        "region": region,
+#        "sddc_type": sddc_type,
+#        "size": size,
+#        "skip_creating_vxlan": False,
+#        "storage_capacity": storage_capacity,
+#        "vpc_cidr": vpc_cidr
+#    }
+#    
+#    data = post_request(
+#        '{}{}'.format(VMC_URL, uri),
+#        _update_headers(access_token),
+#        params = params
+#    )
+#    
+#    #return dict
+#    return data
 
 def _account_link_config(link_aws):
     if link_aws:
