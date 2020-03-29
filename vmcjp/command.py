@@ -69,11 +69,10 @@ def check_max_hosts(event):
         i += len(sddc.get("resource_config").get("esx_hosts"))
     
     max_hosts = (sddclimit - 1) - i
-#    if max_hosts < 1:
-#        return max_hosts
-#    else:
-#        return 1 if max_hosts < 3 else max_hosts
-    return 10 #for test
+    if max_hosts < 1:
+        return max_hosts
+    else:
+        return 1 if max_hosts < 3 else max_hosts
 
 def list_region(event):
     regions = get_aws_region(
