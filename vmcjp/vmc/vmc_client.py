@@ -46,7 +46,6 @@ def _get_org_id_by_token(refresh_token):
         params={"tokenValue": refresh_token}
     )
     
-    #return dict
     return data
 
 def token_validation(refresh_token, org_id):
@@ -62,16 +61,12 @@ def token_validation(refresh_token, org_id):
 
 def _get_sddcs(access_token, org_id):
     uri = "/orgs/{}/sddcs".format(org_id)
-#    headers = {"csp-auth-token": access_token}
-#    headers.update(HEADERS)
     
     data = get_request(
         '{}{}'.format(VMC_URL, uri),
-#        headers
         _update_headers(access_token)
     )
     
-    #return dict
     return data
 
 def sddc_name_and_id_list(access_token, org_id):
@@ -117,7 +112,6 @@ def _get_org(access_token, org_id):
         _update_headers(access_token)
     )
     
-    #return dict
     return data
 
 def get_sddclimit(access_token, org_id):
