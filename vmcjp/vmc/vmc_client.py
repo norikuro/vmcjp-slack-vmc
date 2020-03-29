@@ -109,7 +109,7 @@ def sddc_list(access_token, org_id):
         #return dict
         return data
 
-def get_org(access_token, org_id):
+def _get_org(access_token, org_id):
     uri = "/orgs/{}".format(org_id)
     
     data = get_request(
@@ -121,7 +121,7 @@ def get_org(access_token, org_id):
     return data
 
 def get_sddclimit(access_token, org_id):
-    data = get_org(access_token, org_id)
+    data = _get_org(access_token, org_id)
     
     if data.get("error_messages") is None:
         #return int
