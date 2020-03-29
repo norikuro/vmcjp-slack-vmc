@@ -28,11 +28,12 @@ def login(refresh_token):
     now = time.time()
     
     if data.get("error_messages") is None:
+        raise Exception("!!! error---")
         #return dict
-        return {
-            "access_token": data.get("access_token"),
-            "expire_time": now + data.get("expires_in") - 180 # minus 3 minutes for extra time befire expire the access_token
-        }
+#        return {
+#            "access_token": data.get("access_token"),
+#            "expire_time": now + data.get("expires_in") - 180 # minus 3 minutes for extra time befire expire the access_token
+#        }
     else:
         raise Exception(data.get("error_messages"))
         #return dict
