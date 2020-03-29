@@ -68,7 +68,7 @@ def get_sddcs(access_token, org_id):
     data = get_request(
         '{}{}'.format(VMC_URL, uri),
 #        headers
-        update_headers(access_token)
+        _update_headers(access_token)
     )
     
     #return dict
@@ -135,7 +135,7 @@ def get_aws_region(access_token, org_id):
     
     data = get_request(
         '{}{}'.format(VMC_URL, uri),
-        update_headers(access_token)
+        _update_headers(access_token)
     )
     
     if data.get("error_messages") is None:
@@ -150,7 +150,7 @@ def get_connected_accounts(access_token, org_id):
     
     data = get_request(
         '{}{}'.format(VMC_URL, uri),
-        update_headers(access_token)
+        _update_headers(access_token)
     )
     
     #return dict
@@ -162,7 +162,7 @@ def get_vpc_map(access_token, org_id, linked_account_id, region):
     
     data = get_request(
         '{}{}'.format(VMC_URL, uri),
-        update_headers(access_token),
+        _update_headers(access_token),
         params = params
     )
     
@@ -210,7 +210,7 @@ def create_sddc(
     
     data = post_request(
         '{}{}'.format(VMC_URL, uri),
-        update_headers(access_token),
+        _update_headers(access_token),
         params = params
     )
     
