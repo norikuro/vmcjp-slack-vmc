@@ -28,11 +28,13 @@ def login(refresh_token):
     now = time.time()
     
     if data.get("error_messages") is None:
+        #return dict
         return {
             "access_token": data.get("access_token"),
             "expire_time": now + data.get("expires_in") - 180 # minus 3 minutes for extra time befire expire the access_token
         }
     else:
+        #return dict
         return data
 
 def get_org_id_by_token(refresh_token):
@@ -44,6 +46,7 @@ def get_org_id_by_token(refresh_token):
         params={"tokenValue": refresh_token}
     )
     
+    #return dict
     return data
 
 def token_validation(refresh_token, org_id):
@@ -51,8 +54,10 @@ def token_validation(refresh_token, org_id):
     
     if data.get("error_messages") is None:
         if data.get("orgId") == org_id:
+            #return str
             return data.get("username")
     else:
+        #return dict
         return data
 
 def get_sddcs(access_token, org_id):
@@ -66,10 +71,12 @@ def get_sddcs(access_token, org_id):
         update_headers(access_token)
     )
     
+    #return dict
     return data
 
 def sddc_name_and_id_list(access_token, org_id):
     sddcs = get_sddcs(access_token, org_id)
+    
     if data.get("error_messages") is None:
         #return list
         return [
@@ -82,10 +89,12 @@ def sddc_name_and_id_list(access_token, org_id):
             } for sddc in sddcs
         ]
     else:
+        #return dict
         return data
 
 def sddc_list(access_token, org_id):
     sddcs = get_sddcs(access_token, org_id)
+    
     if data.get("error_messages") is None:
         #return list
         return [
@@ -97,7 +106,8 @@ def sddc_list(access_token, org_id):
             } for sddc in sddcs
         ]
     else:
-        data
+        #return dict
+        return data
 
 def get_org(access_token, org_id):
     uri = "/orgs/{}".format(org_id)
@@ -107,19 +117,21 @@ def get_org(access_token, org_id):
         update_headers(access_token)
     )
     
+    #return dict
     return data
 
 def get_sddclimit(access_token, org_id):
     data = get_org(access_token, org_id)
     
     if data.get("error_messages") is None:
+        #return int
         return int(data.get("properties").get("values").get("sddcLimit"))
     else:
+        #return dict
         return data
 
 def get_aws_region(access_token, org_id):
     uri = "/orgs/{}/sddcs/provision-spec".format(org_id)
-#    data = get_org(access_token, org_id)
     
     data = get_request(
         '{}{}'.format(VMC_URL, uri),
@@ -127,9 +139,10 @@ def get_aws_region(access_token, org_id):
     )
     
     if data.get("error_messages") is None:
-#        return data.get("properties").get("values").get("defaultAwsRegions").split(",")
+        #return list
         return data.get("provider").get("AWS").get("region_display_names")
     else:
+        #return dict
         return data
 
 def get_connected_accounts(access_token, org_id):
@@ -140,6 +153,7 @@ def get_connected_accounts(access_token, org_id):
         update_headers(access_token)
     )
     
+    #return dict
     return data
 
 def get_vpc_map(access_token, org_id, linked_account_id, region):
@@ -152,6 +166,7 @@ def get_vpc_map(access_token, org_id, linked_account_id, region):
         params = params
     )
     
+    #return dict
     return data
 
 def create_sddc(
@@ -199,6 +214,7 @@ def create_sddc(
         params = params
     )
     
+    #return dict
     return data
 
 def account_link_config(link_aws):
