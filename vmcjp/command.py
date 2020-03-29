@@ -10,6 +10,8 @@ from vmcjp.vmc.vmc_client import login, sddc_list, token_validation, get_sddcs, 
 
 def lambda_handler(event, context):
 #    logging.info(event)
+    raise Exception("!!! error----")
+    
     expire_time = event.get("expire_time")
     command = event.get("vmc_command")
     
