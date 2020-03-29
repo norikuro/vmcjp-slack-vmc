@@ -86,7 +86,8 @@ def sddc_name_and_id_list(access_token, org_id):
 
 def sddc_list(access_token, org_id):
     sddcs = get_sddcs(access_token, org_id)
-    if sddcs is not None:
+    if data.get("error_messages") is None:
+        #return list
         return [
             {
                 "sddc_name": sddc.get("name"),
@@ -95,6 +96,8 @@ def sddc_list(access_token, org_id):
                 "num_hosts": len(sddc.get("resource_config").get("esx_hosts"))
             } for sddc in sddcs
         ]
+    else:
+        data
 
 def get_org(access_token, org_id):
     uri = "/orgs/{}".format(org_id)
