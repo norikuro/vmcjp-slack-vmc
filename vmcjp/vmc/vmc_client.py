@@ -189,8 +189,8 @@ def create_sddc(
     uri = "/orgs/{}/sddcs".format(org_id)
     
     params = {
-        "account_link_config": account_link_config(link_aws),
-        "account_link_sddc_config": account_link_sddc_config(
+        "account_link_config": _account_link_config(link_aws),
+        "account_link_sddc_config": _account_link_sddc_config(
             connected_account_id, 
             customer_subnet_id
         ) if link_aws else None,
@@ -217,7 +217,7 @@ def create_sddc(
     #return dict
     return data
 
-def account_link_config(link_aws):
+def _account_link_config(link_aws):
     if link_aws:
         return {
             "delay_account_link": True
@@ -227,7 +227,7 @@ def account_link_config(link_aws):
             "delay_account_link": False
         }
 
-def account_link_sddc_config(connected_account_id, customer_subnet_id):
+def _account_link_sddc_config(connected_account_id, customer_subnet_id):
     return [
         {
             "connected_account_id": connected_account_id,
