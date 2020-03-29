@@ -10,7 +10,6 @@ from vmcjp.vmc.vmc_client import login, sddc_list, token_validation, get_sddcs, 
 
 def lambda_handler(event, context):
 #    logging.info(event)
-    raise Exception("!!! error----")
     
     expire_time = event.get("expire_time")
     command = event.get("vmc_command")
@@ -32,7 +31,7 @@ def lambda_handler(event, context):
             data
         )
     
-#    return eval(event.get("vmc_command"))(event)
+    return eval(event.get("vmc_command"))(event)
 
 def _expired(expire_time):
     now = time.time()
