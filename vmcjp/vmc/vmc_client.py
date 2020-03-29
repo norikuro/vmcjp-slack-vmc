@@ -28,12 +28,11 @@ def login(refresh_token):
     now = time.time()
     
     if data.get("error_messages") is None:
-        raise Exception("!!! error---")
         #return dict
-#        return {
-#            "access_token": data.get("access_token"),
-#            "expire_time": now + data.get("expires_in") - 180 # minus 3 minutes for extra time befire expire the access_token
-#        }
+        return {
+            "access_token": data.get("access_token"),
+            "expire_time": now + data.get("expires_in") - 180 # minus 3 minutes for extra time befire expire the access_token
+        }
     else:
         raise Exception(data.get("error_messages"))
         #return dict
@@ -70,44 +69,37 @@ def get_sddcs(access_token, org_id):
         _update_headers(access_token)
     )
     
-    return data
+    if data.get("error_messages") is None:
+        return data
+    else:
+        raise Exception(data.get("error_messages"))
 
 def sddc_name_and_id_list(access_token, org_id):
     sddcs = get_sddcs(access_token, org_id)
     
-    if data.get("error_messages") is None:
-        #return list
-        return [
-            {
-                "text": sddc.get("name"),
-                "value": "{}+{}".format(
-                    sddc.get("name"), 
-                    sddc.get("resource_config").get("sddc_id")
-                )
-            } for sddc in sddcs
-        ]
-    else:
-        raise Exception(data.get("error_messages"))
-        #return dict
-#        return data
+    #return list
+    return [
+        {
+            "text": sddc.get("name"),
+            "value": "{}+{}".format(
+                sddc.get("name"), 
+                sddc.get("resource_config").get("sddc_id")
+            )
+        } for sddc in sddcs
+    ]
 
 def sddc_list(access_token, org_id):
     sddcs = get_sddcs(access_token, org_id)
     
-    if data.get("error_messages") is None:
-        #return list
-        return [
-            {
-                "sddc_name": sddc.get("name"),
-                "user_name": sddc.get("user_name"),
-                "created": sddc.get("created"),
-                "num_hosts": len(sddc.get("resource_config").get("esx_hosts"))
-            } for sddc in sddcs
-        ]
-    else:
-        raise Exception(data.get("error_messages"))
-        #return dict
-#        return data
+    #return list
+    return [
+        {
+            "sddc_name": sddc.get("name"),
+            "user_name": sddc.get("user_name"),
+            "created": sddc.get("created"),
+            "num_hosts": len(sddc.get("resource_config").get("esx_hosts"))
+        } for sddc in sddcs
+    ]
 
 def _get_org(access_token, org_id):
     uri = "/orgs/{}".format(org_id)
@@ -117,18 +109,16 @@ def _get_org(access_token, org_id):
         _update_headers(access_token)
     )
     
-    return data
+    if data.get("error_messages") is None:
+        return data
+    else:
+        raise Exception(data.get("error_messages"))
 
 def get_sddclimit(access_token, org_id):
     data = _get_org(access_token, org_id)
     
-    if data.get("error_messages") is None:
-        #return int
-        return int(data.get("properties").get("values").get("sddcLimit"))
-    else:
-        raise Exception(data.get("error_messages"))
-        #return dict
-#        return data
+    #return int
+    return int(data.get("properties").get("values").get("sddcLimit"))
 
 def get_aws_region(access_token, org_id):
     uri = "/orgs/{}/sddcs/provision-spec".format(org_id)
