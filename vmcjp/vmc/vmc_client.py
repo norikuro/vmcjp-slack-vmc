@@ -23,7 +23,8 @@ def login(refresh_token):
     data = post_request(
         '{}{}'.format(LOGIN_URL, uri),
         HEADERS,
-        query=query
+#        query=query
+        params=query
     )
     now = time.time()
     
@@ -39,7 +40,8 @@ def _get_org_id_by_token(refresh_token):
     data = post_request(
         '{}{}'.format(LOGIN_URL, uri),
         HEADERS,
-        params={"tokenValue": refresh_token}
+#        params={"tokenValue": refresh_token}
+        data={"tokenValue": refresh_token}
     )
     
     return data
