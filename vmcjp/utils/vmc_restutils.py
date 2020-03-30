@@ -4,6 +4,8 @@ import requests
 import json
 import logging
 
+from vmcjp.utils.metadata import get_members
+
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
