@@ -17,7 +17,8 @@ def _update_headers(access_token):
     return headers
 
 def login(refresh_token):
-    uri = "/am/api/auth/api-tokens/authorize"
+#    uri = "/am/api/auth/api-tokens/authorize"
+    uri = "/am/api/auth/api-tokens/autho"
     query = {"refresh_token": refresh_token}
     
     data = post_request(
