@@ -4,7 +4,8 @@ import time
 
 from vmcjp.utils.vmc_restutils import post_request, get_request
 
-LOGIN_URL = "https://console.cloud.vmware.com/csp/gateway"
+#LOGIN_URL = "https://console.cloud.vmware.com/csp/gateway"
+LOGIN_URL = "https://console.cloud.vmware.c/csp/gateway"
 #VMC_URL = "https://vmc.vmware.com/vmc/api"
 VMC_URL = "https://vmc.vmware.c/vmc/api"
 HEADERS = {"Content-Type": "application/json"}
