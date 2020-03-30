@@ -25,11 +25,13 @@ def post_request(url, headers, query=None, params=None):
   try:
     
     with urllib.request.urlopen(request) as response:
+      logging.info(response)
       data = json.loads(response.read().decode("utf-8"))
       return data
     
   except urllib.error.HTTPError as err:
-    logging.info(data)
+    logging.info("!!! response,, {}".format(response))
+    logging.info("!!! data,, {}".format(data))
     
     if err.code in [400, 401, 403, 404]:
       if data.get("error_messages") is not None:
