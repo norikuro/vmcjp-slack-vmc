@@ -29,6 +29,7 @@ def post_request(url, headers, query=None, params=None):
       return data
     
   except urllib.error.HTTPError as err:
+    logging.info(data)
     
     if err.code in [400, 401, 403, 404]:
       if data.get("error_messages") is not None:
@@ -66,7 +67,7 @@ def get_request(url, headers, params=None):
       return data
     
   except urllib.error.HTTPError as err:
-    logging.info(data)
+    
     if err.code in [400, 401, 403, 404]:
       if data.get("error_messages") is not None:
         raise Exception(data.get("error_messages")[0])
