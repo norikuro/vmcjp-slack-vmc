@@ -30,7 +30,7 @@ def post_request(url, headers, query=None, params=None):
       return data
     
   except urllib.error.HTTPError as err:
-    logging.info("!!! response,, {}".format(response))
+    logging.info("!!! err,, {}".format(err))
     logging.info("!!! data,, {}".format(data))
     
     if err.code in [400, 401, 403, 404]:
