@@ -26,14 +26,13 @@ def post_request(url, headers, params=None, data=None):
 #    headers=headers
 #  )
   
-  try:
-    response = requests.post(
-      url,
-      headers=headers,
-      params=params,
-      data=data
-    )
-    logging.info(response.json())
+  response = requests.post(
+    url,
+    headers=headers,
+    params=params,
+    data=data
+  )
+  logging.info(response.json())
 #    with urllib.request.urlopen(request) as response:
 #      data = json.loads(response.read().decode("utf-8"))
 #      return data
