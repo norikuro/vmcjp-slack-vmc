@@ -32,6 +32,7 @@ def post_request(url, headers, params=None, data=None):
     params=params,
     data=data
   )
+  logging.info(response.status_code)
   logging.info(response.json())
 #    with urllib.request.urlopen(request) as response:
 #      data = json.loads(response.read().decode("utf-8"))
