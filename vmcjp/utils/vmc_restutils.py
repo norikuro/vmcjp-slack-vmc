@@ -34,6 +34,9 @@ def post_request(url, headers, params=None, data=None):
   )
   logging.info(response.status_code)
   logging.info(response.json())
+  
+  if response.status_code in [400, 401, 403, 404]:
+    raise Exception(response.json().get("message"))
 #    with urllib.request.urlopen(request) as response:
 #      data = json.loads(response.read().decode("utf-8"))
 #      return data
