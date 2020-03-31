@@ -23,23 +23,19 @@ def login(refresh_token):
     uri = "/am/api/auth/api-tokens/autho"
     query = {"refresh_token": refresh_token}
     
-    try:
-        data = post_request(
-            '{}{}'.format(LOGIN_URL, uri),
-            HEADERS,
-#            query=query
-            params=query
-        )
-    except Exception as e:
-        raise Exception(e.message)
-    else:
-        now = time.time()
-        
-        #return dict
-        return {
-            "access_token": data.get("access_token"),
-            "expire_time": now + data.get("expires_in") - 180 # minus 3 minutes for extra time befire expire the access_token
-        }
+    data = post_request(
+        '{}{}'.format(LOGIN_URL, uri),
+        HEADERS,
+#        query=query
+        params=query
+     )
+    now = time.time()
+    
+    #return dict
+    return {
+        "access_token": data.get("access_token"),
+        "expire_time": now + data.get("expires_in") - 180 # minus 3 minutes for extra time befire expire the access_token
+    }
 
 def _get_org_id_by_token(refresh_token):
     uri = "/am/api/auth/api-tokens/details"
