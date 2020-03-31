@@ -33,14 +33,14 @@ def post_request(url, headers, params=None, data=None):
       params=params,
       data=data
     )
+    
   except requests.RequestException as e:
     raise Exception("Network error has occurred!")
-  else:
-    logging.info(response.status_code)
-    logging.info(response.json())
     
+  else:
     status = response.status_code
     resp_data = response.json()
+    
     if status == 200:
       return resp_data
     elif status in [400, 401, 403, 404]:
