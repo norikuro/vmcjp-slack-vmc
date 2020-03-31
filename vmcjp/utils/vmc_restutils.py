@@ -34,7 +34,7 @@ def post_request(url, headers, params=None, data=None):
       data=data
     )
   except requests.RequestException as e:
-    logging.info(e)
+    raise Exception("Network error has occurred!")
   else:
     logging.info(response.status_code)
     logging.info(response.json())
