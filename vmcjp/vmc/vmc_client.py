@@ -19,13 +19,11 @@ def _update_headers(access_token):
 
 def login(refresh_token):
     uri = "/am/api/auth/api-tokens/authorize"
-#    uri = "/am/api/auth/api-tokens/autho"
     query = {"refresh_token": refresh_token}
     
     data = post_request(
         '{}{}'.format(LOGIN_URL, uri),
         HEADERS,
-#        query=query
         params=query
      )
     now = time.time()
@@ -42,7 +40,6 @@ def _get_org_id_by_token(refresh_token):
     data = post_request(
         '{}{}'.format(LOGIN_URL, uri),
         HEADERS,
-#        params={"tokenValue": refresh_token}
         data={"tokenValue": refresh_token}
     )
     
