@@ -34,7 +34,6 @@ def post_request(url, headers, params=None, data=None):
       data=data
     )
   except requests.RequestException as e:
-    logging.info(get_members(e))
     logging.info(e)
   else:
     logging.info(response.status_code)
