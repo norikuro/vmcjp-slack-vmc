@@ -2,10 +2,10 @@ import urllib.request
 import urllib.error
 import requests
 import json
-#import logging
+import logging
 
-#logger = logging.getLogger()
-#logger.setLevel(logging.INFO)
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
 def post_request(url, headers, params=None, data=None):
 #  if query is not None:
@@ -45,12 +45,12 @@ def post_request(url, headers, params=None, data=None):
       return resp_data
     elif status in [400, 401, 403, 404]:
       message = resp_data.get("message")
-      error_messages = resp_data.get("error_messages")[0]
+      error_messages = resp_data.get("error_messages")
       
       if message is not None:
         raise Exception(message)
       elif error_messages is not None:
-        raise Exception(error_messages)
+        raise Exception(error_messages[0])
       else:
         raise Exception("Something wrong!")
     else:
