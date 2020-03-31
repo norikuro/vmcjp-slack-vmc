@@ -1,6 +1,6 @@
 import json
 import time
-import logging
+#import logging
 
 from vmcjp.utils.vmc_restutils import post_request, get_request
 
@@ -10,8 +10,8 @@ VMC_URL = "https://vmc.vmware.com/vmc/api"
 #VMC_URL = "https://vmc.vmware.c/vmc/api"
 HEADERS = {"Content-Type": "application/json"}
 
-logger = logging.getLogger()
-logger.setLevel(logging.INFO)
+#logger = logging.getLogger()
+#logger.setLevel(logging.INFO)
 
 def _update_headers(access_token):
     headers = {"csp-auth-token": access_token}
