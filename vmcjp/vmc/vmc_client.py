@@ -159,7 +159,7 @@ def create_sddc(
 ):
     uri = "/orgs/{}/sddcs".format(org_id)
     
-    params = {
+    config = {
         "account_link_config": _account_link_config(link_aws),
         "account_link_sddc_config": _account_link_sddc_config(
             connected_account_id, 
@@ -182,7 +182,7 @@ def create_sddc(
     data = post_request(
         '{}{}'.format(VMC_URL, uri),
         _update_headers(access_token),
-        params = params
+        data=config
     )
     
     #return dict
