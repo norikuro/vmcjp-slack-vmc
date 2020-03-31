@@ -43,14 +43,21 @@ def post_request(url, headers, params=None, data=None):
     
 def get_request(url, headers, params=None):
   if params is not None:
-    query = urllib.parse.urlencode(params)
-    url = "{}?{}".format(url, query)
+#    query = urllib.parse.urlencode(params)
+#    url = "{}?{}".format(url, query)
+    url = "{}?".format(url)
     
-  request = urllib.request.Request(
-    url,
-    method = "GET",
-    headers=headers
-  )
+  try:
+    response = requests.get(
+      url,
+      headers=headers,
+      params=params
+    )
+#  request = urllib.request.Request(
+#    url,
+#    method = "GET",
+#    headers=headers
+#  )
   
   try:
     
