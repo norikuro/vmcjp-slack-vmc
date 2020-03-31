@@ -41,8 +41,23 @@ def post_request(url, headers, params=None, data=None):
   else:
     logging.info(response.status_code)
     logging.info(response.json())
-    if response.status_code in [400, 401, 403, 404]:
-      raise Exception(response.json().get("message"))
+    
+    status = response.status_code
+    resp_data = response.json()
+    if status == 200:
+      return resp_data
+    elif status in [400, 401, 403, 404]:
+      message = resp_data.get("message")
+      error_messages = resp_data.get("error_messages")[0]
+      
+      if message is not None:
+        raise Exception(message)
+      elif error_messages is not None:
+        raise Exception(error_messages)
+      else:
+        raise Exception("Something wrong!")
+    else:
+      raise Exception("Something wrong!")
     
 #    with urllib.request.urlopen(request) as response:
 #      data = json.loads(response.read().decode("utf-8"))
