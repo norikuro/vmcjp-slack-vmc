@@ -1,5 +1,3 @@
-#import urllib.request
-#import urllib.error
 import requests
 import json
 #import logging
@@ -42,11 +40,6 @@ def post_request(url, headers, params=None, data=None):
       raise Exception("Something wrong!")
     
 def get_request(url, headers, params=None):
-#  if params is not None:
-#    query = urllib.parse.urlencode(params)
-#    url = "{}?{}".format(url, query)
-#    url = "{}?".format(url)
-    
   try:
     response = requests.get(
       url,
@@ -74,34 +67,3 @@ def get_request(url, headers, params=None):
         raise Exception("Something wrong!")
     else:
       raise Exception("Something wrong!")
-#  request = urllib.request.Request(
-#    url,
-#    method = "GET",
-#    headers=headers
-#  )
-  
-#  try:
-#    
-#    with urllib.request.urlopen(request) as response:
-#      data = json.loads(response.read().decode("utf-8"))
-#      return data
-#    
-#  except urllib.error.HTTPError as err:
-#    
-#    if err.code in [400, 401, 403, 404]:
-#      if data.get("error_messages") is not None:
-#        raise Exception(data.get("error_messages")[0])
-#      elif data.get("message") is not None:
-#        raise Exception(data.get("message"))
-#      else:
-#        raise Exception("Failed to send/get request, something wrong!")
-#    else:
-#      raise Exception("Failed to send/get request, something wrong!")
-#      
-#  except urllib.error.URLError as err:
-#    
-#    reason = err.reason
-#    if reason is not None:
-#      raise Exception(reason)
-#    else:
-#      raise Exception("Failed to send/get request, something wrong!")
