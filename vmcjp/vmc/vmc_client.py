@@ -155,7 +155,7 @@ def create_sddc(
     deployment_type=None, 
     host_instance_type=None, 
     sddc_type=None, 
-    storage_capacity=None, 
+    storage_capacity=None
 ):
     uri = "/orgs/{}/sddcs".format(org_id)
     
