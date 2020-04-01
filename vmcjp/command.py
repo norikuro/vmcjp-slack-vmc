@@ -167,4 +167,4 @@ def create_sddc(event):
         event.get("storage_capacity")
     )
     
-    return data
+    return data.get("id")
