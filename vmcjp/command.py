@@ -3,7 +3,7 @@ import time
 
 from vmcjp.utils import cmd_const
 from vmcjp.slack.db import write_cred_db
-from vmcjp.vmc.vmc_client import login, sddc_list, token_validation, get_sddcs, get_sddclimit, get_aws_region, get_connected_accounts, get_vpc_map
+from vmcjp.vmc.vmc_client import login, sddc_list, token_validation, get_sddcs, get_sddclimit, get_aws_region, get_connected_accounts, get_vpc_map, sddc_creation
 
 #logger = logging.getLogger()
 #logger.setLevel(logging.INFO)
@@ -147,3 +147,24 @@ def list_subnet(event):
             "value": subnet.get("subnet_id")
         } for subnet in subnets if subnet.get("compatible")
     ]
+
+def create_sddc(event):
+    data = sddc_creation(
+        event.get("access_token"), 
+        event.get("org_id"), 
+        event.get("link_aws"), 
+        event.get("sddc_name"), 
+        event.get("num_hosts"), 
+        event.get("provider"), 
+        event.get("region"), 
+        event.get("size"), 
+        event.get("vpc_cidr"), 
+        event.get("connected_account_id"), 
+        event.get("customer_subnet_id"), 
+        event.get("deployment_type"), 
+        event.get("host_instance_type"), 
+        event.get("sddc_type"), 
+        event.get("storage_capacity"), 
+    )
+    
+    return data
