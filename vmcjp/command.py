@@ -164,7 +164,7 @@ def create_sddc(event):
         event.get("deployment_type"), 
         event.get("host_instance_type"), 
         event.get("sddc_type"), 
-        event.get("storage_capacity"), 
+        event.get("storage_capacity")
     )
     
     return data
