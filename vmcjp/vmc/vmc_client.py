@@ -139,7 +139,7 @@ def get_vpc_map(access_token, org_id, linked_account_id, region):
     #return dict
     return data
 
-def create_sddc(
+def sddc_creation(
     access_token,
     org_id, 
     link_aws,
