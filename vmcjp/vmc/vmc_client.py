@@ -168,7 +168,7 @@ def sddc_creation(
         "host_instance_type": host_instance_type,
         "name": sddc_name,
         "num_hosts": num_hosts,
-        "one_node_reduced_capacity": false,
+        "one_node_reduced_capacity": False,
         "provider": provider,
         "region": region,
         "sddc_type": sddc_type,
