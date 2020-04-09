@@ -40,30 +40,30 @@ def post_request(url, headers, params=None, data=None):
         raise Exception("Something wrong!")
     
 def get_request(url, headers, params=None):
-  try:
-    response = requests.get(
-      url,
-      headers=headers,
-      params=params
-    )
-  except requests.RequestException as e:
-    raise Exception("Network error has occurred!")
-    
-  else:
-    status = response.status_code
-    resp_data = response.json()
-    
-    if status == 200:
-      return resp_data
-    elif status in [400, 401, 403, 404]:
-      message = resp_data.get("message")
-      error_messages = resp_data.get("error_messages")
-      
-      if message is not None:
-        raise Exception(message)
-      elif error_messages is not None:
-        raise Exception(error_messages[0])
-      else:
-        raise Exception("Something wrong!")
+    try:
+        response = requests.get(
+            url,
+            headers=headers,
+            params=params
+        )
+    except requests.RequestException as e:
+        raise Exception("Network error has occurred!")
+        
     else:
-      raise Exception("Something wrong!")
+        status = response.status_code
+        resp_data = response.json()
+        
+        if status in [200, 202]:
+            return resp_data
+        elif status in [400, 401, 403, 404]:
+            message = resp_data.get("message")
+            error_messages = resp_data.get("error_messages")
+            
+            if message is not None:
+                raise Exception(message)
+            elif error_messages is not None:
+                raise Exception(error_messages[0])
+            else:
+                raise Exception("Something wrong!")
+        else:
+            raise Exception("Something wrong!")
