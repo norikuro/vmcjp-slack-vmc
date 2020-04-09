@@ -150,22 +150,22 @@ def list_subnet(event):
 
 def create_sddc(event):
     logging.info("!!! create sddc, {}".format(event))
-#    data = sddc_creation(
-#        event.get("access_token"), 
-#        event.get("org_id"), 
-#        event.get("link_aws"), 
-#        event.get("sddc_name"), 
-#        event.get("num_hosts"), 
-#        event.get("provider"), 
-#        event.get("region"), 
-#        event.get("size"), 
-#        event.get("vpc_cidr"), 
-#        event.get("connected_account_id"), 
-#        event.get("customer_subnet_id"), 
-#        event.get("deployment_type"), 
-#        event.get("host_instance_type"), 
-#        event.get("sddc_type"), 
-#        event.get("storage_capacity")
-#    )
-#    logging.info("!!! task data, {}".format(data))
-#    return data.get("id")
+    data = sddc_creation(
+        event.get("access_token"), 
+        event.get("org_id"), 
+        event.get("link_aws"), 
+        event.get("sddc_name"), 
+        event.get("num_hosts"), 
+        event.get("provider"), 
+        event.get("region"), 
+        event.get("size"), 
+        event.get("vpc_cidr"), 
+        event.get("connected_account_id"), 
+        event.get("customer_subnet_id"), 
+        event.get("deployment_type"), 
+        event.get("host_instance_type"), 
+        event.get("sddc_type"), 
+        event.get("storage_capacity")
+    )
+    logging.info("!!! task data, {}".format(data))
+    return data.get("id")
