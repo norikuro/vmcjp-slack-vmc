@@ -3,7 +3,7 @@ import time
 
 from vmcjp.utils import cmd_const
 from vmcjp.slack.db import write_cred_db, read_event_db
-from vmcjp.vmc.vmc_client import login, sddc_list, token_validation, get_sddcs, get_sddclimit, get_aws_region, get_connected_accounts, get_vpc_map, sddc_creation, sddc_deletion
+from vmcjp.vmc.vmc_client import login, sddc_list, token_validation, get_sddcs, get_sddclimit, get_aws_region, get_connected_accounts, get_vpc_map, sddc_creation, sddc_deletion, sddc_name_and_id_list
 
 #logger = logging.getLogger()
 #logger.setLevel(logging.INFO)
@@ -185,3 +185,9 @@ def delete_sddc(event):
         event.get("sddc_id"), 
     )
     return data.get("id")
+
+def list_sddcs_name_id(event):
+    return sddc_name_and_id_list(
+        event.get("access_token"), 
+        event.get("org_id")
+    )
