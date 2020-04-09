@@ -179,4 +179,9 @@ def create_sddc(event):
         raise Exception("Can not create sddc concurrently!!")
 
 def delete_sddc(event):
-    data = sddc_deletion()
+    data = sddc_deletion(
+        event.get("access_token"), 
+        event.get("org_id"), 
+        event.get("sddc_id"), 
+    )
+    return data.get("id")
