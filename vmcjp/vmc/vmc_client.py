@@ -214,4 +214,12 @@ def _account_link_sddc_config(connected_account_id, customer_subnet_id):
         }
     ]
 
-#def sddc_deletion():
+def sddc_deletion(access_token, org_id, sddc_id):
+    uri = "/orgs/{}/sddcs/{}".format(org_id, sddc_id)
+
+    data = delete_request(
+        '{}{}'.format(VMC_URL, uri),
+        _update_headers(access_token)
+    )
+    
+    return data
