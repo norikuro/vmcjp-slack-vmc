@@ -1,9 +1,9 @@
 import requests
 import json
-#import logging
+import logging
 
-#logger = logging.getLogger()
-#logger.setLevel(logging.INFO)
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
 def post_request(url, headers, params=None, data=None):
   if data is not None:
@@ -23,6 +23,8 @@ def post_request(url, headers, params=None, data=None):
   else:
     status = response.status_code
     resp_data = response.json()
+    logging.info("resp status, {}".format(status))
+    logging.info("resp_data, {}".format(resp_data))
     
     if status == 200:
       return resp_data
