@@ -1,9 +1,9 @@
 import requests
 import json
-import logging
+#import logging
 
-logger = logging.getLogger()
-logger.setLevel(logging.INFO)
+#logger = logging.getLogger()
+#logger.setLevel(logging.INFO)
 
 def post_request(url, headers, params=None, data=None):
   if data is not None:
