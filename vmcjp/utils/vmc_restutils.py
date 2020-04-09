@@ -26,7 +26,7 @@ def post_request(url, headers, params=None, data=None):
     logging.info("resp status, {}".format(status))
     logging.info("resp_data, {}".format(resp_data))
     
-    if status == 200:
+    if status in [200, 202]:
       return resp_data
     elif status in [400, 401, 403, 404]:
       message = resp_data.get("message")
