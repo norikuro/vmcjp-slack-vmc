@@ -213,3 +213,5 @@ def _account_link_sddc_config(connected_account_id, customer_subnet_id):
             ]
         }
     ]
+
+#def sddc_deletion():
