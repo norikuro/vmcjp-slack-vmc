@@ -1,6 +1,6 @@
 import json
 import time
-#import logging
+import logging
 
 from vmcjp.utils.vmc_restutils import post_request, get_request
 
@@ -184,6 +184,12 @@ def sddc_creation(
         data=config
     )
     
+    #need this log to ckeck config later if something happened
+    logger = logging.getLogger()
+    logger.setLevel(logging.INFO)
+    logging.info("create sddc config, {}".format(config))
+    logging.info("create sddc task, {}".format(data))
+
     #return dict
     return data
 
