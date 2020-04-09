@@ -196,11 +196,11 @@ def sddc_creation(
 def _account_link_config(link_aws):
     if link_aws:
         return {
-            "delay_account_link": True
+            "delay_account_link": False
         }
     else:
         return {
-            "delay_account_link": False
+            "delay_account_link": True
         }
 
 def _account_link_sddc_config(connected_account_id, customer_subnet_id):
