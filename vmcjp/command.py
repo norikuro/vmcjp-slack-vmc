@@ -149,6 +149,7 @@ def list_subnet(event):
     ]
 
 def create_sddc(event):
+    logging.info("!!! create sddc, {}".format(event))
     data = sddc_creation(
         event.get("access_token"), 
         event.get("org_id"), 
