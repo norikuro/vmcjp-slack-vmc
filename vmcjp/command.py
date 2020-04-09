@@ -3,7 +3,7 @@ import time
 
 from vmcjp.utils import cmd_const
 from vmcjp.slack.db import write_cred_db, read_event_db
-from vmcjp.vmc.vmc_client import login, sddc_list, token_validation, get_sddcs, get_sddclimit, get_aws_region, get_connected_accounts, get_vpc_map, sddc_creation
+from vmcjp.vmc.vmc_client import login, sddc_list, token_validation, get_sddcs, get_sddclimit, get_aws_region, get_connected_accounts, get_vpc_map, sddc_creation, sddc_deletion
 
 #logger = logging.getLogger()
 #logger.setLevel(logging.INFO)
@@ -177,3 +177,6 @@ def create_sddc(event):
         return data.get("id")
     else:
         raise Exception("Can not create sddc concurrently!!")
+
+def delete_sddc(event):
+    data = sddc_deletion()
