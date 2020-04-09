@@ -23,8 +23,6 @@ def post_request(url, headers, params=None, data=None):
   else:
     status = response.status_code
     resp_data = response.json()
-    logging.info("resp status, {}".format(status))
-    logging.info("resp_data, {}".format(resp_data))
     
     if status in [200, 202]:
       return resp_data
