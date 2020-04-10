@@ -8,8 +8,8 @@ LOGIN_URL = "https://console.cloud.vmware.com/csp/gateway"
 VMC_URL = "https://vmc.vmware.com/vmc/api"
 HEADERS = {"Content-Type": "application/json"}
 
-#logger = logging.getLogger()
-#logger.setLevel(logging.INFO)
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
 def _update_headers(access_token):
     headers = {"csp-auth-token": access_token}
@@ -226,12 +226,15 @@ def sddc_deletion(access_token, org_id, sddc_id):
 
 def get_sddc(access_token, org_id, sddc_id):
     uri = "/orgs/{}/sddcs/{}".format(org_id, sddc_id)
+    logging.info("!!! org id: ".format(org_id))
+    logging.info("!!! sddc id: ".format(sddc_id))
     
     data = get_request(
         '{}{}'.format(VMC_URL, uri),
         _update_headers(access_token)
     )
     
+    logging.info("!!! response data: ".format(data))
     return data
    
     
