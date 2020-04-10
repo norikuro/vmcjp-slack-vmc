@@ -191,3 +191,5 @@ def list_sddcs_name_id(event):
         event.get("access_token"), 
         event.get("org_id")
     )
+
+def check_sddc_user(event):
