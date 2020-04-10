@@ -3,7 +3,7 @@ import time
 
 from vmcjp.utils import cmd_const
 from vmcjp.slack.db import write_cred_db, read_event_db
-from vmcjp.vmc.vmc_client import login, sddc_list, token_validation, get_sddcs, get_sddclimit, get_aws_region, get_connected_accounts, get_vpc_map, sddc_creation, sddc_deletion, sddc_name_and_id_list
+from vmcjp.vmc.vmc_client import login, sddc_list, token_validation, get_sddcs, get_sddclimit, get_aws_region, get_connected_accounts, get_vpc_map, sddc_creation, sddc_deletion, sddc_name_and_id_list, get_sddc
 
 #logger = logging.getLogger()
 #logger.setLevel(logging.INFO)
