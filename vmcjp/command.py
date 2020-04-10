@@ -1,12 +1,12 @@
 import time
-#import logging
+import logging
 
 from vmcjp.utils import cmd_const
 from vmcjp.slack.db import write_cred_db, read_event_db
 from vmcjp.vmc.vmc_client import login, sddc_list, token_validation, get_sddcs, get_sddclimit, get_aws_region, get_connected_accounts, get_vpc_map, sddc_creation, sddc_deletion, sddc_name_and_id_list, get_sddc
 
-#logger = logging.getLogger()
-#logger.setLevel(logging.INFO)
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
 def lambda_handler(event, context):
 #    logging.info(event)
@@ -193,6 +193,7 @@ def list_sddcs_name_id(event):
     )
 
 def get_sddc_user(event):
+    logging.info("!!! get_sddc_user, {}".format(event))
     data = get_sddc(
         event.get("access_token"), 
         event.get("org_id"), 
