@@ -193,3 +193,10 @@ def list_sddcs_name_id(event):
     )
 
 def check_sddc_user(event):
+    data = get_sddc(
+        event.get("access_token"), 
+        event.get("org_id"), 
+        event.get("sddc_id")
+    )
+    
+    return data.get("user_name")
