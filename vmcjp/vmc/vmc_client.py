@@ -223,3 +223,15 @@ def sddc_deletion(access_token, org_id, sddc_id):
     )
     
     return data
+
+def get_sddc(access_token, org_id, sddc_id):
+    uri = "/orgs/{}/sddcs/{}".format(org_id, sddc_id)
+    
+    data = get_request(
+        '{}{}'.format(VMC_URL, uri),
+        _update_headers(access_token)
+    )
+    
+    return data
+   
+    
