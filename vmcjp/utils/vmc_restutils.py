@@ -1,9 +1,9 @@
 import requests
 import json
-#import logging
+import logging
 
-#logger = logging.getLogger()
-#logger.setLevel(logging.INFO)
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
 def post_request(url, headers, params=None, data=None):
     if data is not None:
@@ -74,6 +74,8 @@ def delete_request(url, headers):
             url,
             headers=headers
         )
+        logging.info("!!! delete response: ".format(response))
+        logging.info("!!! delete response: ".format(response.json()))
         
     except requests.RequestException as e:
         raise Exception("Network error has occurred!")
