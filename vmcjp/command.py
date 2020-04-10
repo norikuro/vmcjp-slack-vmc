@@ -198,5 +198,4 @@ def check_sddc_user(event):
         event.get("org_id"), 
         event.get("sddc_id")
     )
-    
     return data.get("user_name")
