@@ -8,8 +8,8 @@ LOGIN_URL = "https://console.cloud.vmware.com/csp/gateway"
 VMC_URL = "https://vmc.vmware.com/vmc/api"
 HEADERS = {"Content-Type": "application/json"}
 
-logger = logging.getLogger()
-logger.setLevel(logging.INFO)
+#logger = logging.getLogger()
+#logger.setLevel(logging.INFO)
 
 def _update_headers(access_token):
     headers = {"csp-auth-token": access_token}
@@ -178,16 +178,18 @@ def sddc_creation(
         "vpc_cidr": vpc_cidr
     }
     
+    #need this log to ckeck config later if something happened
+    logger = logging.getLogger()
+    logger.setLevel(logging.INFO)
+    logging.info("create sddc config, {}".format(config))
+    
     data = post_request(
         '{}{}'.format(VMC_URL, uri),
         _update_headers(access_token),
         data=config
     )
     
-    #need this log to ckeck config later if something happened
-    logger = logging.getLogger()
-    logger.setLevel(logging.INFO)
-    logging.info("create sddc config, {}".format(config))
+    #need this log to ckeck config later if something happened    
     logging.info("create sddc task, {}".format(data))
 
     #return dict
