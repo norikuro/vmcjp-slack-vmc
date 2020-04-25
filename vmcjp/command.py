@@ -1,12 +1,12 @@
 import time
-import logging
+#import logging
 
 from vmcjp.utils import cmd_const
 from vmcjp.slack.db import write_cred_db, read_event_db
 from vmcjp.vmc.vmc_client import login, sddc_list, token_validation, get_sddcs, get_sddclimit, get_aws_region, get_connected_accounts, get_vpc_map, sddc_creation, sddc_deletion, sddc_name_and_id_list, get_sddc
 
-logger = logging.getLogger()
-logger.setLevel(logging.INFO)
+#logger = logging.getLogger()
+#logger.setLevel(logging.INFO)
 
 def lambda_handler(event, context):
 #    logging.info(event)
@@ -149,7 +149,6 @@ def list_subnet(event):
     ]
 
 def create_sddc(event):
-#    logging.info("!!! create sddc, {}".format(event))
     event_db = read_event_db(
         event.get("db_url"),
         event.get("user_id"),
@@ -173,7 +172,6 @@ def create_sddc(event):
             event.get("sddc_type"), 
             event.get("storage_capacity")
         )
-#        logging.info("!!! task data, {}".format(data))
         return data.get("id")
     else:
         raise Exception("Can not create sddc concurrently!!")
