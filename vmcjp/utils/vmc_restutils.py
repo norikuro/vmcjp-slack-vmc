@@ -1,9 +1,9 @@
 import requests
 import json
-import logging
+#import logging
 
-logger = logging.getLogger()
-logger.setLevel(logging.INFO)
+#logger = logging.getLogger()
+#logger.setLevel(logging.INFO)
 
 def post_request(url, headers, params=None, data=None):
     if data is not None:
@@ -31,16 +31,16 @@ def post_request(url, headers, params=None, data=None):
         error_messages = resp_data.get("error_messages")
         
         if message is not None:
-            logging.info("rest error has happened, {}".format(resp_data))
+#            logging.info("rest error has happened, {}".format(resp_data))
             raise Exception(message)
         elif error_messages is not None:
-            logging.info("rest error has happened, {}".format(resp_data))
+#            logging.info("rest error has happened, {}".format(resp_data))
             raise Exception(error_messages[0])
         else:
-            logging.info("rest error has happened, {}".format(resp_data))
+#            logging.info("rest error has happened, {}".format(resp_data))
             raise Exception("Something wrong!")
     else:
-        logging.info("rest error has happened, {}".format(resp_data))
+#        logging.info("rest error has happened, {}".format(resp_data))
         raise Exception("Something wrong!")
     
 def get_request(url, headers, params=None):
