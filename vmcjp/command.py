@@ -191,7 +191,6 @@ def list_sddcs_name_id(event):
     )
 
 def get_sddc_user(event):
-    logging.info("!!! get_sddc_user, {}".format(event))
     data = get_sddc(
         event.get("access_token"), 
         event.get("org_id"), 
