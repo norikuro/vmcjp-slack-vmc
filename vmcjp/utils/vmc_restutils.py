@@ -78,8 +78,8 @@ def delete_request(url, headers):
             url,
             headers=headers
         )
-        logging.info("!!! delete response: {}".format(response))
-        logging.info("!!! delete response: {}".format(response.json()))
+#        logging.info("!!! delete response: {}".format(response))
+#        logging.info("!!! delete response: {}".format(response.json()))
         
     except requests.RequestException as e:
         raise Exception("Network error has occurred!")
